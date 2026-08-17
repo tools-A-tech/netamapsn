@@ -439,15 +439,21 @@
       }
 
       const genres = (t.genres || []).slice(0, 2).map(g => '<span>' + g + '</span>').join('');
-      let coverStyle = '';
-      let coverContent = '<div class="case-title">' + escapeHtml(t.title) + '</div>';
-      if (t.poster) {
-        coverStyle = 'background-image:url('' + t.poster + ''); background-size:cover; background-position:center;';
-        coverContent = '<div class="case-title" style="background:rgba(0,0,0,0.55); padding:4px 2px; border-radius:2px;">' + escapeHtml(t.title) + '</div>';
+      
+      // ポスターURLのプレースホルダーを修正
+      let poster = t.poster || '';
+      if (poster) {
+        poster = poster.replace('{profile}', 's166').replace('{format}', 'jpg');
       }
-      div.innerHTML = badge +
-        '<div class="case-cover" style="' + coverStyle + '">' + coverContent + '</div>' +
-        '<div class="case-meta">' + genres + '</div>';
+      
+      let coverHtml = '';
+      if (poster) {
+        coverHtml = '<div class="case-cover" style="background-image:url(\'' + poster + '\'); background-size:cover; background-position:center;"><div class="case-title" style="background:rgba(0,0,0,0.55);padding:4px 2px;border-radius:2px;">' + escapeHtml(t.title) + '</div></div>';
+      } else {
+        coverHtml = '<div class="case-cover"><div class="case-title">' + escapeHtml(t.title) + '</div></div>';
+      }
+      
+      div.innerHTML = badge + coverHtml + '<div class="case-meta">' + genres + '</div>';
       return div;
     }
 
