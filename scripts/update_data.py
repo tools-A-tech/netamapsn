@@ -58,6 +58,7 @@ def fetch_page(provider_code, after_cursor=None):
               originalTitle
               fullPath
               posterUrl
+              originalReleaseYear
               scoring { imdbScore }
               externalIds { tmdbId imdbId }
               genres { shortName translation(language: $language) }
@@ -119,7 +120,7 @@ def fetch_page(provider_code, after_cursor=None):
                 "type": "series" if node.get("objectType") == "SHOW" else "movie",
                 "genres": genres,
                 "platforms": [],
-                "year": None,
+                "year": content.get("originalReleaseYear"),
                 "release_date": None,
                 "added_date": now_jst().strftime("%Y-%m-%d"),
                 "leaving_date": None,
