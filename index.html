@@ -329,6 +329,7 @@
     let allData = null;
     let currentFilter = 'all';
     let currentGenre = null;
+    let currentPlatform = null;
     let currentSort = 'added_desc';
     let searchQuery = '';
 
@@ -351,9 +352,36 @@
       if (label) container.appendChild(label);
 
       const genreSet = new Set();
+      const platformSet = new Set();
       Object.values(allData.services).forEach(svc => {
         (svc.genres || []).forEach(g => genreSet.add(g));
-        (svc.titles || []).forEach(t => (t.genres || []).forEach(g => genreSet.add(g)));
+        (svc.platforms || []).forEach(p => platformSet.add(p));
+        (svc.titles || []).forEach(t => {
+          (t.genres || []).forEach(g => genreSet.add(g));
+          (t.platforms || []).forEach(p => platformSet.add(p));
+        });
+      });
+
+      // プラットフォーム（PS4/PS5）を先に出す
+      [...platformSet].sort().forEach(p => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.platform = p;
+        btn.textContent = p;
+        btn.style.background = '#003087';
+        btn.style.color = 'white';
+        btn.addEventListener('click', () => {
+          if (btn.classList.contains('active')) {
+            btn.classList.remove('active');
+            currentPlatform = null;
+          } else {
+            container.querySelectorAll('[data-platform]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentPlatform = p;
+          }
+          render();
+        });
+        container.appendChild(btn);
       });
 
       [...genreSet].sort().forEach(g => {
@@ -394,6 +422,7 @@
       else if (currentFilter === 'leaving') list = list.filter(t => isLeaving(t));
 
       if (currentGenre) list = list.filter(t => (t.genres || []).includes(currentGenre));
+      if (currentPlatform) list = list.filter(t => (t.platforms || []).includes(currentPlatform));
 
       list.sort((a, b) => {
         if (currentSort === 'added_desc') return (b.added_date || '').localeCompare(a.added_date || '');
@@ -438,7 +467,10 @@
         badge = '<div class="case-badge leaving">あと' + d + '日</div>';
       }
 
-      const genres = (t.genres || []).slice(0, 2).map(g => '<span>' + g + '</span>').join('');
+      const tags = [];
+      (t.platforms || []).forEach(p => tags.push('<span style="background:#003087;color:white;">' + p + '</span>'));
+      (t.genres || []).slice(0, 2).forEach(g => tags.push('<span>' + g + '</span>'));
+      const genres = tags.join('');
       
       // ポスターURLのプレースホルダーを修正
       let poster = t.poster || '';
@@ -503,6 +535,7 @@
       let status = '表示中：' + total + '件';
       if (searchQuery) status += ' ／ 検索「' + searchQuery + '」';
       if (currentGenre) status += ' ／ ジャンル「' + currentGenre + '」';
+      if (currentPlatform) status += ' ／ 機種「' + currentPlatform + '」';
       if (currentFilter !== 'all') status += ' ／ ' + (currentFilter === 'new' ? '新着' : '終了間近');
       document.getElementById('statusLine').textContent = status + ' ／ 更新: ' + (allData.updated_at || '-');
     }
