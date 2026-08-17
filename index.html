@@ -600,6 +600,41 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+
+    // スワイプでページ送り（スマホ向け）
+    let touchStartX = 0;
+    let touchStartY = 0;
+    const SWIPE_THRESHOLD = 60;
+
+    document.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      if (!e.changedTouches || e.changedTouches.length !== 1) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      // 横スワイプが縦より大きく、一定距離以上
+      if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+
+      const list = getAllFiltered();
+      const totalPages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+
+      if (dx < 0 && currentPage < totalPages) {
+        // 左スワイプ → 次へ
+        currentPage++;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (dx > 0 && currentPage > 1) {
+        // 右スワイプ → 前へ
+        currentPage--;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, { passive: true });
+
     loadData();
   </script>
 </body>
