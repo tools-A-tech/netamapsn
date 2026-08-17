@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サブスク棚 - 実装準備版（JSON連携）</title>
+  <title>netamapsn - サブスク棚</title>
   <style>
     :root {
       --bg: #0a0a0a;
       --bg-card: #141414;
-      --bg-elevated: #1a1a1a;
-      --text: #e5e5e5;
-      --text-muted: #a0a0a0;
+      --text: #e8e8e8;
+      --text-muted: #999;
+      --border: #2a2a2a;
       --accent-red: #e50914;
       --accent-blue: #00a8e1;
       --accent-ps: #0070d1;
-      --border: #2a2a2a;
-      --card-shadow: 0 4px 16px rgba(0,0,0,0.5);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -31,7 +29,7 @@
     .shop-header {
       background: #000;
       border-bottom: 1px solid var(--border);
-      padding: 10px 20px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -39,292 +37,277 @@
       top: 0;
       z-index: 100;
     }
-    .logo-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .logo-link img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-    .shop-nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .shop-nav a {
+    .logo-link img { height: 34px; width: auto; display: block; }
+    .shop-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+    .shop-nav a, .shop-nav button {
       color: #ccc;
-      background: #1f1f1f;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
+      background: #1a1a1a;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 0.82rem;
       border: 1px solid #333;
-      transition: all 0.15s;
+      cursor: pointer;
     }
-    .shop-nav a:hover {
+    .shop-nav a:hover, .shop-nav button:hover,
+    .shop-nav a.active, .shop-nav button.active {
       background: var(--accent-red);
-      color: white;
+      color: #fff;
       border-color: var(--accent-red);
     }
-
-    .sample-banner {
-      background: #1a2e1a;
-      border: 1px solid #2e5a2e;
-      color: #a5d6a7;
-      padding: 10px 16px;
-      margin: 16px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      text-align: center;
-    }
+    .shop-nav button.prime.active { background: var(--accent-blue); border-color: var(--accent-blue); }
+    .shop-nav button.ps.active { background: var(--accent-ps); border-color: var(--accent-ps); }
 
     /* Controls */
     .controls {
       background: var(--bg-card);
-      margin: 0 16px 20px;
-      padding: 16px;
-      border-radius: 12px;
+      margin: 12px 12px 16px;
+      padding: 14px;
+      border-radius: 10px;
       border: 1px solid var(--border);
-      position: sticky;
-      top: 56px;
-      z-index: 90;
     }
-    .search-row { display: flex; gap: 10px; margin-bottom: 12px; }
     #searchInput {
-      flex: 1;
-      min-width: 180px;
+      width: 100%;
       padding: 10px 14px;
       border: 1px solid #333;
       border-radius: 8px;
       font-size: 1rem;
       background: #111;
       color: var(--text);
+      margin-bottom: 12px;
     }
     #searchInput::placeholder { color: #666; }
-    .filter-group, .sort-group {
+
+    .filter-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 10px;
       align-items: center;
+      margin-bottom: 8px;
     }
-    .filter-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      min-width: 70px;
-    }
-    .filter-btn, .sort-select {
+    .filter-label { font-size: 0.75rem; color: var(--text-muted); min-width: 52px; }
+    .filter-btn {
       border: 1px solid #444;
       background: #1f1f1f;
       color: #ddd;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.82rem;
+      padding: 5px 11px;
+      border-radius: 16px;
+      font-size: 0.8rem;
       cursor: pointer;
     }
-    .filter-btn:hover { border-color: #777; }
-    .filter-btn.active {
-      background: #e5e5e5;
-      color: #111;
-      border-color: #e5e5e5;
-    }
-    .sort-select {
+    .filter-btn.active { background: #eee; color: #111; border-color: #eee; }
+    .filter-btn.platform { background: #003087; color: #fff; border-color: #003087; }
+    .filter-btn.platform.active { background: #4da3ff; color: #000; }
+
+    /* Genre curtain */
+    .genre-curtain {
+      border: 1px solid #333;
       border-radius: 8px;
-      padding: 6px 10px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+    .genre-toggle {
+      width: 100%;
+      text-align: left;
+      padding: 10px 14px;
+      background: #1a1a1a;
+      color: #ccc;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .genre-toggle:hover { background: #222; }
+    .genre-body {
+      display: none;
+      padding: 10px 12px;
+      background: #111;
+      border-top: 1px solid #333;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .genre-body.open { display: flex; }
+
+    .sort-row { margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+    .sort-select {
       background: #1f1f1f;
       color: #ddd;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 0.85rem;
     }
-    .status-line {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
+    .status-line { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
 
-    /* Store */
-    .store-floor {
+    /* Grid */
+    .grid-section {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 0 16px 80px;
+      padding: 0 12px 60px;
     }
-    .corner {
-      margin-bottom: 36px;
-      background: var(--bg-card);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .corner-header {
-      padding: 14px 20px;
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 8px 0 14px;
+      padding-left: 4px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
+      gap: 10px;
     }
-    .corner-netflix .corner-header { background: linear-gradient(90deg, #e50914, #b20710); }
-    .corner-prime .corner-header { background: linear-gradient(90deg, #00a8e1, #0077b6); }
-    .corner-psplus .corner-header { background: linear-gradient(90deg, #003087, #0070d1); }
-    .corner-badge {
-      background: rgba(255,255,255,0.2);
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-    }
-
-    .shelf-row {
-      padding: 14px 12px 18px;
-      background: #111;
-      border-bottom: 1px solid #222;
-    }
-    .shelf-row:last-child { border-bottom: none; }
-    .shelf-label {
-      display: inline-block;
-      background: #333;
-      color: white;
-      font-size: 0.78rem;
-      padding: 3px 12px;
-      border-radius: 4px;
-      margin-bottom: 10px;
-      margin-left: 6px;
-    }
-    .shelf-label.popular { background: #e50914; }
-    .shelf-label.new { background: #00a86b; }
-    .shelf-label.leaving { background: #e74c3c; }
-
-    .shelf-track {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding: 4px 4px 10px;
-      scroll-snap-type: x mandatory;
-    }
-    .shelf-track::-webkit-scrollbar { height: 6px; }
-    .shelf-track::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
-
-    .case {
-      flex: 0 0 118px;
-      width: 118px;
-      scroll-snap-align: start;
-      background: #1a1a1a;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: transform 0.2s;
-      cursor: pointer;
-      position: relative;
-      border: 1px solid #2a2a2a;
-    }
-    .case:hover { transform: translateY(-5px); border-color: #555; }
-    .case-cover {
-      height: 158px;
+    .section-title .count {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
       background: #222;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      color: white;
-      padding: 8px;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .title-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px 12px;
+    }
+    @media (max-width: 1100px) { .title-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 800px)  { .title-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 520px)  { .title-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #2a2a2a;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
       position: relative;
     }
-    .case-title {
+    .card:hover { transform: translateY(-4px); border-color: #555; }
+    .card-poster {
+      aspect-ratio: 2/3;
+      background: #222 center/cover no-repeat;
       position: relative;
-      z-index: 2;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.25;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.9);
     }
-    .case-badge {
+    .card-poster .badge {
       position: absolute;
-      top: 5px;
-      left: 5px;
-      z-index: 3;
-      font-size: 0.62rem;
-      padding: 2px 5px;
-      border-radius: 3px;
-      font-weight: 700;
-      color: white;
-    }
-    .case-badge.new { background: #00a86b; }
-    .case-badge.leaving { background: #e74c3c; }
-    .case-meta {
-      padding: 5px 4px;
+      top: 6px; left: 6px;
       font-size: 0.65rem;
-      color: #aaa;
-      background: #151515;
-      border-top: 1px solid #2a2a2a;
-    }
-    .case-meta span {
-      display: inline-block;
-      background: #2a2a2a;
-      padding: 1px 4px;
+      font-weight: 700;
+      padding: 2px 6px;
       border-radius: 3px;
-      margin-right: 2px;
-      color: #ccc;
+      color: #fff;
+    }
+    .badge.new { background: #00a86b; }
+    .badge.leaving { background: #e74c3c; }
+    .card-info {
+      padding: 8px 8px 10px;
+    }
+    .card-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+    .card-tags span {
+      font-size: 0.65rem;
+      background: #2a2a2a;
+      color: #bbb;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .card-tags span.platform {
+      background: #003087;
+      color: #fff;
     }
 
     .empty-msg {
-      padding: 40px;
       text-align: center;
+      padding: 60px 20px;
       color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 10px;
+      flex-wrap: wrap;
+    }
+    .pagination button {
+      background: #1f1f1f;
+      color: #ddd;
+      border: 1px solid #444;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .pagination button:hover:not(:disabled) { background: #333; }
+    .pagination button:disabled { opacity: 0.35; cursor: default; }
+    .pagination .page-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      min-width: 100px;
+      text-align: center;
     }
 
     .shop-footer {
       text-align: center;
-      padding: 24px 16px;
-      color: #666;
-      font-size: 0.85rem;
-      background: #000;
+      padding: 20px 12px;
+      color: #555;
+      font-size: 0.8rem;
       border-top: 1px solid #222;
-    }
-
-    @media (max-width: 600px) {
-      .case { flex: 0 0 100px; width: 100px; }
-      .case-cover { height: 135px; }
-      .controls { top: 52px; }
-      .logo-link img { height: 30px; }
+      background: #000;
     }
   </style>
 </head>
 <body>
 
   <header class="shop-header">
-    <a href="#" class="logo-link" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;" title="ホーム">
+    <a href="#" class="logo-link" id="homeBtn" title="ホーム">
       <img src="logo.png" alt="netamapsn">
     </a>
-    <nav class="shop-nav">
-      <a href="#netflix">Netflix</a>
-      <a href="#prime">Amazon</a>
-      <a href="#psplus">PS Plus</a>
+    <nav class="shop-nav" id="serviceNav">
+      <button type="button" data-service="all" class="active">すべて</button>
+      <button type="button" data-service="netflix">Netflix</button>
+      <button type="button" data-service="prime" class="prime">Amazon</button>
+      <button type="button" data-service="psplus" class="ps">PS Plus</button>
     </nav>
   </header>
 
-  <div class="sample-banner">
-    この版は <strong>JSONデータ連携</strong> の実装準備版です。<br>
-    実際の配信データを毎日更新する仕組みのベースになります。検索はタイトル優先で関係ないものが極力出ないように調整しています。
-  </div>
-
   <div class="controls">
-    <div class="search-row">
-      <input type="text" id="searchInput" placeholder="タイトルで検索（関係ないものは極力出ません）">
-    </div>
+    <input type="text" id="searchInput" placeholder="タイトルで検索（関係ないものは極力出ません）">
 
-    <div class="filter-group">
+    <div class="filter-row">
       <span class="filter-label">状態：</span>
       <button class="filter-btn active" data-filter="all">すべて</button>
       <button class="filter-btn" data-filter="new">新着</button>
       <button class="filter-btn" data-filter="leaving">配信終了間近</button>
     </div>
 
-    <div class="filter-group" id="genreButtons">
-      <span class="filter-label">ジャンル：</span>
+    <div class="genre-curtain">
+      <button type="button" class="genre-toggle" id="genreToggle">
+        <span>ジャンル・機種</span>
+        <span id="genreArrow">▼</span>
+      </button>
+      <div class="genre-body" id="genreBody">
+        <!-- JSで生成 -->
+      </div>
     </div>
 
-    <div class="sort-group">
+    <div class="sort-row">
       <span class="filter-label">並べ替え：</span>
       <select class="sort-select" id="sortSelect">
         <option value="added_desc">登録順（新しい順）</option>
@@ -338,24 +321,28 @@
     <div class="status-line" id="statusLine">読み込み中...</div>
   </div>
 
-  <main class="store-floor" id="storeFloor"></main>
+  <main class="grid-section" id="mainArea">
+    <!-- JS -->
+  </main>
 
   <footer class="shop-footer">
-    サブスク棚 実装準備版<br>
-    データは data/titles.json から読み込みます。毎日更新する想定です。
+    netamapsn — Netflix / Amazon / PS Plus を探しやすく
   </footer>
 
   <script>
+    const PER_PAGE = 50;
     let allData = null;
+    let currentService = 'all';
     let currentFilter = 'all';
     let currentGenre = null;
     let currentPlatform = null;
     let currentSort = 'added_desc';
     let searchQuery = '';
+    let currentPage = 1;
 
     async function loadData() {
       try {
-        const res = await fetch('data/titles.json');
+        const res = await fetch('data/titles.json?t=' + Date.now());
         allData = await res.json();
         buildGenreButtons();
         render();
@@ -366,11 +353,8 @@
     }
 
     function buildGenreButtons() {
-      const container = document.getElementById('genreButtons');
-      const label = container.querySelector('.filter-label');
-      container.innerHTML = '';
-      if (label) container.appendChild(label);
-
+      const body = document.getElementById('genreBody');
+      body.innerHTML = '';
       const genreSet = new Set();
       const platformSet = new Set();
       Object.values(allData.services).forEach(svc => {
@@ -382,26 +366,24 @@
         });
       });
 
-      // プラットフォーム（PS4/PS5）を先に出す
       [...platformSet].sort().forEach(p => {
         const btn = document.createElement('button');
-        btn.className = 'filter-btn';
+        btn.className = 'filter-btn platform';
         btn.dataset.platform = p;
         btn.textContent = p;
-        btn.style.background = '#003087';
-        btn.style.color = 'white';
-        btn.addEventListener('click', () => {
+        btn.onclick = () => {
           if (btn.classList.contains('active')) {
             btn.classList.remove('active');
             currentPlatform = null;
           } else {
-            container.querySelectorAll('[data-platform]').forEach(b => b.classList.remove('active'));
+            body.querySelectorAll('[data-platform]').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentPlatform = p;
           }
+          currentPage = 1;
           render();
-        });
-        container.appendChild(btn);
+        };
+        body.appendChild(btn);
       });
 
       [...genreSet].sort().forEach(g => {
@@ -409,38 +391,60 @@
         btn.className = 'filter-btn';
         btn.dataset.genre = g;
         btn.textContent = g;
-        btn.addEventListener('click', () => {
+        btn.onclick = () => {
           if (btn.classList.contains('active')) {
             btn.classList.remove('active');
             currentGenre = null;
           } else {
-            container.querySelectorAll('[data-genre]').forEach(b => b.classList.remove('active'));
+            body.querySelectorAll('[data-genre]').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentGenre = g;
           }
+          currentPage = 1;
           render();
-        });
-        container.appendChild(btn);
+        };
+        body.appendChild(btn);
       });
     }
 
-    function getFilteredTitles(serviceKey) {
-      const svc = allData.services[serviceKey];
-      if (!svc) return [];
-      let list = [...svc.titles];
+    function isNew(t) {
+      if (!t.added_date) return false;
+      const diff = (new Date() - new Date(t.added_date)) / 86400000;
+      return diff <= 14;
+    }
+    function isLeaving(t) {
+      if (!t.leaving_date) return false;
+      const diff = (new Date(t.leaving_date) - new Date()) / 86400000;
+      return diff >= 0 && diff <= 14;
+    }
+    function daysLeft(t) {
+      if (!t.leaving_date) return null;
+      return Math.ceil((new Date(t.leaving_date) - new Date()) / 86400000);
+    }
+
+    function getAllFiltered() {
+      let list = [];
+      const services = currentService === 'all'
+        ? Object.keys(allData.services)
+        : [currentService];
+
+      services.forEach(key => {
+        const svc = allData.services[key];
+        if (!svc) return;
+        (svc.titles || []).forEach(t => {
+          list.push({ ...t, _service: key });
+        });
+      });
 
       if (searchQuery) {
         const q = searchQuery.toLowerCase().trim();
-        list = list.filter(t => {
-          const title = (t.title || '').toLowerCase();
-          const original = (t.original_title || '').toLowerCase();
-          return title.includes(q) || original.includes(q);
-        });
+        list = list.filter(t =>
+          (t.title || '').toLowerCase().includes(q) ||
+          (t.original_title || '').toLowerCase().includes(q)
+        );
       }
-
-      if (currentFilter === 'new') list = list.filter(t => isNew(t));
-      else if (currentFilter === 'leaving') list = list.filter(t => isLeaving(t));
-
+      if (currentFilter === 'new') list = list.filter(isNew);
+      if (currentFilter === 'leaving') list = list.filter(isLeaving);
       if (currentGenre) list = list.filter(t => (t.genres || []).includes(currentGenre));
       if (currentPlatform) list = list.filter(t => (t.platforms || []).includes(currentPlatform));
 
@@ -455,113 +459,95 @@
       return list;
     }
 
-    function isNew(t) {
-      if (!t.added_date) return false;
-      const added = new Date(t.added_date);
-      const now = new Date();
-      return (now - added) / (1000 * 60 * 60 * 24) <= 14;
+    function posterUrl(t) {
+      let p = t.poster || '';
+      if (!p) return '';
+      return p.replace('{profile}', 's166').replace('{format}', 'jpg');
     }
 
-    function isLeaving(t) {
-      if (!t.leaving_date) return false;
-      const leave = new Date(t.leaving_date);
-      const now = new Date();
-      const diff = (leave - now) / (1000 * 60 * 60 * 24);
-      return diff >= 0 && diff <= 14;
-    }
-
-    function daysLeft(t) {
-      if (!t.leaving_date) return null;
-      return Math.ceil((new Date(t.leaving_date) - new Date()) / (1000 * 60 * 60 * 24));
-    }
-
-    function createCase(t) {
+    function createCard(t) {
       const div = document.createElement('div');
-      div.className = 'case';
+      div.className = 'card';
       div.onclick = () => { if (t.link) window.open(t.link, '_blank'); };
 
       let badge = '';
-      if (isNew(t)) badge = '<div class="case-badge new">NEW</div>';
-      else if (isLeaving(t)) {
-        const d = daysLeft(t);
-        badge = '<div class="case-badge leaving">あと' + d + '日</div>';
-      }
+      if (isNew(t)) badge = '<div class="badge new">NEW</div>';
+      else if (isLeaving(t)) badge = '<div class="badge leaving">あと' + daysLeft(t) + '日</div>';
 
-      const tags = [];
-      (t.platforms || []).forEach(p => tags.push('<span style="background:#003087;color:white;">' + p + '</span>'));
-      (t.genres || []).slice(0, 2).forEach(g => tags.push('<span>' + g + '</span>'));
-      const genres = tags.join('');
-      
-      // ポスターURLのプレースホルダーを修正
-      let poster = t.poster || '';
-      if (poster) {
-        poster = poster.replace('{profile}', 's166').replace('{format}', 'jpg');
-      }
-      
-      let coverHtml = '';
-      if (poster) {
-        coverHtml = '<div class="case-cover" style="background-image:url(\'' + poster + '\'); background-size:cover; background-position:center;"><div class="case-title" style="background:rgba(0,0,0,0.55);padding:4px 2px;border-radius:2px;">' + escapeHtml(t.title) + '</div></div>';
-      } else {
-        coverHtml = '<div class="case-cover"><div class="case-title">' + escapeHtml(t.title) + '</div></div>';
-      }
-      
-      div.innerHTML = badge + coverHtml + '<div class="case-meta">' + genres + '</div>';
+      const poster = posterUrl(t);
+      const style = poster ? 'background-image:url(\'' + poster + '\')' : '';
+
+      let tags = '';
+      (t.platforms || []).forEach(p => { tags += '<span class="platform">' + p + '</span>'; });
+      (t.genres || []).slice(0, 2).forEach(g => { tags += '<span>' + g + '</span>'; });
+
+      div.innerHTML =
+        '<div class="card-poster" style="' + style + '">' + badge + '</div>' +
+        '<div class="card-info">' +
+          '<div class="card-title">' + escapeHtml(t.title) + '</div>' +
+          '<div class="card-tags">' + tags + '</div>' +
+        '</div>';
       return div;
     }
 
-    function escapeHtml(str) {
-      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    }
-
-    function renderShelf(title, labelClass, titles) {
-      if (!titles.length) return '';
-      const casesHtml = titles.map(t => createCase(t).outerHTML).join('');
-      return '<div class="shelf-row"><div class="shelf-label ' + labelClass + '">' + title + '</div><div class="shelf-track">' + casesHtml + '</div></div>';
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
     function render() {
-      const floor = document.getElementById('storeFloor');
       if (!allData) return;
+      const list = getAllFiltered();
+      const total = list.length;
+      const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+      if (currentPage > totalPages) currentPage = totalPages;
 
-      let html = '';
+      const start = (currentPage - 1) * PER_PAGE;
+      const pageItems = list.slice(start, start + PER_PAGE);
 
-      const nf = getFilteredTitles('netflix');
-      html += '<section class="corner corner-netflix" id="netflix"><div class="corner-header"><div>Netflixコーナー</div><div class="corner-badge">' + nf.length + '件</div></div>';
-      if (nf.length === 0) html += '<div class="empty-msg">該当するタイトルがありません</div>';
-      else {
-        html += renderShelf('表示中のタイトル', 'popular', nf);
-        const news = nf.filter(isNew);
-        const leaving = nf.filter(isLeaving);
-        if (news.length) html += renderShelf('新着', 'new', news);
-        if (leaving.length) html += renderShelf('配信終了間近', 'leaving', leaving);
+      const main = document.getElementById('mainArea');
+      let titleText = 'すべて';
+      if (currentService === 'netflix') titleText = 'Netflix';
+      if (currentService === 'prime') titleText = 'Amazonプライム';
+      if (currentService === 'psplus') titleText = 'PS Plus';
+
+      let html = '<div class="section-title">' + titleText +
+        ' <span class="count">' + total + '件</span></div>';
+
+      if (pageItems.length === 0) {
+        html += '<div class="empty-msg">該当するタイトルがありません</div>';
+      } else {
+        html += '<div class="title-grid" id="grid"></div>';
+        html += '<div class="pagination">' +
+          '<button id="prevBtn"' + (currentPage <= 1 ? ' disabled' : '') + '>← 前へ</button>' +
+          '<span class="page-info">' + currentPage + ' / ' + totalPages + ' ページ</span>' +
+          '<button id="nextBtn"' + (currentPage >= totalPages ? ' disabled' : '') + '>次へ →</button>' +
+          '</div>';
       }
-      html += '</section>';
+      main.innerHTML = html;
 
-      const pr = getFilteredTitles('prime');
-      html += '<section class="corner corner-prime" id="prime"><div class="corner-header"><div>Amazonプライムコーナー</div><div class="corner-badge">' + pr.length + '件</div></div>';
-      if (pr.length === 0) html += '<div class="empty-msg">該当するタイトルがありません</div>';
-      else html += renderShelf('表示中のタイトル', 'popular', pr);
-      html += '</section>';
+      const grid = document.getElementById('grid');
+      if (grid) {
+        pageItems.forEach(t => grid.appendChild(createCard(t)));
+      }
 
-      const ps = getFilteredTitles('psplus');
-      html += '<section class="corner corner-psplus" id="psplus"><div class="corner-header"><div>PS Plusコーナー</div><div class="corner-badge">' + ps.length + '件</div></div>';
-      if (ps.length === 0) html += '<div class="empty-msg">該当するタイトルがありません</div>';
-      else html += renderShelf('表示中のタイトル', 'popular', ps);
-      html += '</section>';
+      const prev = document.getElementById('prevBtn');
+      const next = document.getElementById('nextBtn');
+      if (prev) prev.onclick = () => { currentPage--; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+      if (next) next.onclick = () => { currentPage++; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
-      floor.innerHTML = html;
-
-      const total = nf.length + pr.length + ps.length;
       let status = '表示中：' + total + '件';
       if (searchQuery) status += ' ／ 検索「' + searchQuery + '」';
       if (currentGenre) status += ' ／ ジャンル「' + currentGenre + '」';
       if (currentPlatform) status += ' ／ 機種「' + currentPlatform + '」';
       if (currentFilter !== 'all') status += ' ／ ' + (currentFilter === 'new' ? '新着' : '終了間近');
-      document.getElementById('statusLine').textContent = status + ' ／ 更新: ' + (allData.updated_at || '-');
+      status += ' ／ 更新: ' + (allData.updated_at || '-');
+      document.getElementById('statusLine').textContent = status;
     }
 
-    document.getElementById('searchInput').addEventListener('input', (e) => {
+    // Events
+    document.getElementById('searchInput').addEventListener('input', e => {
       searchQuery = e.target.value;
+      currentPage = 1;
       render();
     });
 
@@ -570,13 +556,48 @@
         document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentFilter = btn.dataset.filter;
+        currentPage = 1;
         render();
       });
     });
 
-    document.getElementById('sortSelect').addEventListener('change', (e) => {
+    document.getElementById('sortSelect').addEventListener('change', e => {
       currentSort = e.target.value;
+      currentPage = 1;
       render();
+    });
+
+    document.getElementById('serviceNav').addEventListener('click', e => {
+      const btn = e.target.closest('[data-service]');
+      if (!btn) return;
+      document.querySelectorAll('#serviceNav [data-service]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentService = btn.dataset.service;
+      currentPage = 1;
+      render();
+    });
+
+    document.getElementById('genreToggle').addEventListener('click', () => {
+      const body = document.getElementById('genreBody');
+      const arrow = document.getElementById('genreArrow');
+      body.classList.toggle('open');
+      arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+    });
+
+    document.getElementById('homeBtn').addEventListener('click', e => {
+      e.preventDefault();
+      currentService = 'all';
+      currentFilter = 'all';
+      currentGenre = null;
+      currentPlatform = null;
+      searchQuery = '';
+      currentPage = 1;
+      document.getElementById('searchInput').value = '';
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+      document.querySelectorAll('#serviceNav [data-service]').forEach(b => b.classList.toggle('active', b.dataset.service === 'all'));
+      document.querySelectorAll('#genreBody .filter-btn').forEach(b => b.classList.remove('active'));
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     loadData();
