@@ -439,8 +439,14 @@
       }
 
       const genres = (t.genres || []).slice(0, 2).map(g => '<span>' + g + '</span>').join('');
+      let coverStyle = '';
+      let coverContent = '<div class="case-title">' + escapeHtml(t.title) + '</div>';
+      if (t.poster) {
+        coverStyle = 'background-image:url('' + t.poster + ''); background-size:cover; background-position:center;';
+        coverContent = '<div class="case-title" style="background:rgba(0,0,0,0.55); padding:4px 2px; border-radius:2px;">' + escapeHtml(t.title) + '</div>';
+      }
       div.innerHTML = badge +
-        '<div class="case-cover"><div class="case-title">' + escapeHtml(t.title) + '</div></div>' +
+        '<div class="case-cover" style="' + coverStyle + '">' + coverContent + '</div>' +
         '<div class="case-meta">' + genres + '</div>';
       return div;
     }

@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-サブスク棚 - データ更新スクリプト
-JustWatch (GraphQL) を中心にデータを取得し、data/titles.json を更新する。
-ブラウザなしで動作することを優先。必要に応じて後で Playwright を追加可能。
+サブスク棚 - データ更新スクリプト (2,000件規模 + ポスター対応)
+JustWatch GraphQL を使用。ページネーションで件数を増やす。
 """
 
 import json
-import os
 import sys
+import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -17,16 +16,14 @@ except ImportError:
     print("requests が必要です: pip install requests")
     sys.exit(1)
 
-# ========== 設定 ==========
 OUTPUT_PATH = Path(__file__).parent.parent / "data" / "titles.json"
 JUSTWATCH_GRAPHQL = "https://apis.justwatch.com/graphql"
 COUNTRY = "JP"
 LANGUAGE = "ja"
 
-# JustWatch の provider コード（日本）
 PROVIDERS = {
     "netflix": "nfx",
-    "prime": "prv",   # Amazon Prime Video
+    "prime": "prv",
 }
 
 HEADERS = {
@@ -38,22 +35,19 @@ HEADERS = {
 }
 
 JST = timezone(timedelta(hours=9))
+MAX_TITLES_PER_PROVIDER = 1800  # 目標件数
+PAGE_SIZE = 100
 
 
 def now_jst():
     return datetime.now(JST)
 
 
-def fetch_justwatch_popular(provider_code: str, count: int = 30):
-    """
-    JustWatch の popularTitles 相当を取得する簡易版。
-    実際のクエリは変更される可能性があるため、失敗時は空リストを返す。
-    """
-    # 注意: JustWatch の GraphQL スキーマは非公式で変更されやすい
-    # ここでは骨格のみ。本番では実際に動くクエリに調整が必要。
+def fetch_page(provider_code: str, after_cursor: str = None):
+    """1ページ分を取得"""
     query = """
-    query GetPopularTitles($country: Country!, $language: Language!, $first: Int!, $popularTitlesFilter: TitleFilter) {
-      popularTitles(country: $country, filter: $popularTitlesFilter, first: $first, sortBy: POPULAR) {
+    query GetPopularTitles($country: Country!, $language: Language!, $first: Int!, $after: String, $filter: TitleFilter) {
+      popularTitles(country: $country, filter: $filter, first: $first, after: $after, sortBy: POPULAR) {
         edges {
           node {
             id
@@ -63,16 +57,17 @@ def fetch_justwatch_popular(provider_code: str, count: int = 30):
               title
               originalTitle
               fullPath
-              scoring {
-                imdbScore
-              }
               posterUrl
-              externalIds {
-                imdbId
-                tmdbId
-              }
+              scoring { imdbScore }
+              externalIds { tmdbId imdbId }
+              genres { shortName translation(language: $language) }
             }
           }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }
@@ -81,87 +76,121 @@ def fetch_justwatch_popular(provider_code: str, count: int = 30):
     variables = {
         "country": COUNTRY,
         "language": LANGUAGE,
-        "first": count,
-        "popularTitlesFilter": {
-            "packages": [provider_code]
-        }
+        "first": PAGE_SIZE,
+        "filter": {"packages": [provider_code]},
     }
+    if after_cursor:
+        variables["after"] = after_cursor
 
     try:
         resp = requests.post(
             JUSTWATCH_GRAPHQL,
             headers=HEADERS,
             json={"query": query, "variables": variables},
-            timeout=30
+            timeout=40
         )
         if resp.status_code != 200:
-            print(f"[JustWatch] HTTP {resp.status_code} for {provider_code}")
-            return []
+            print(f"  HTTP {resp.status_code}")
+            return [], None, False
 
         data = resp.json()
         if "errors" in data:
-            print(f"[JustWatch] GraphQL errors: {data['errors']}")
-            return []
+            print(f"  GraphQL error: {data['errors'][:1]}")
+            return [], None, False
 
-        edges = data.get("data", {}).get("popularTitles", {}).get("edges", [])
+        conn = data.get("data", {}).get("popularTitles", {})
+        edges = conn.get("edges") or []
+        page_info = conn.get("pageInfo") or {}
+        has_next = page_info.get("hasNextPage", False)
+        end_cursor = page_info.get("endCursor")
+
         results = []
         for edge in edges:
-            node = edge.get("node", {})
+            node = edge.get("node") or {}
             content = node.get("content") or {}
+            genres = []
+            for g in content.get("genres") or []:
+                name = g.get("translation") or g.get("shortName")
+                if name:
+                    genres.append(name)
+
+            poster = content.get("posterUrl")
+            # JustWatchのポスターは相対パスの場合がある
+            if poster and poster.startswith("/"):
+                poster = "https://images.justwatch.com" + poster
+
             results.append({
                 "id": f"{provider_code}_{node.get('objectId')}",
                 "title": content.get("title") or "不明",
                 "original_title": content.get("originalTitle") or "",
                 "type": "series" if node.get("objectType") == "SHOW" else "movie",
-                "genres": [],  # 後で詳細取得で補完可能
+                "genres": genres,
                 "year": None,
                 "release_date": None,
                 "added_date": now_jst().strftime("%Y-%m-%d"),
                 "leaving_date": None,
-                "poster": content.get("posterUrl"),
+                "poster": poster,
                 "overview": "",
-                "link": f"https://www.justwatch.com{content.get('fullPath', '')}" if content.get("fullPath") else "",
+                "link": ("https://www.justwatch.com" + content["fullPath"]) if content.get("fullPath") else "",
             })
-        return results
+
+        return results, end_cursor, has_next
     except Exception as e:
-        print(f"[JustWatch] 取得失敗 ({provider_code}): {e}")
-        return []
+        print(f"  Exception: {e}")
+        return [], None, False
 
 
-def create_fallback_data():
-    """JustWatchが失敗した場合のフォールバック（既存JSONを維持しつつ更新日時だけ変える）"""
-    if OUTPUT_PATH.exists():
-        with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        data["updated_at"] = now_jst().isoformat()
-        data["note"] = "JustWatch取得に失敗したため前回データを維持"
-        return data
+def fetch_provider(provider_code: str, max_count: int = MAX_TITLES_PER_PROVIDER):
+    print(f"[{provider_code}] 取得開始 (最大 {max_count} 件)")
+    all_titles = []
+    cursor = None
+    page = 0
 
-    # 最低限の空データ
-    return {
-        "updated_at": now_jst().isoformat(),
-        "note": "初期データ（取得失敗）",
-        "services": {
-            "netflix": {"name": "Netflix", "genres": [], "titles": []},
-            "prime": {"name": "Amazonプライム", "genres": [], "titles": []},
-            "psplus": {"name": "PS Plus", "genres": [], "titles": []}
-        }
-    }
+    while len(all_titles) < max_count:
+        page += 1
+        titles, next_cursor, has_next = fetch_page(provider_code, cursor)
+        if not titles:
+            print(f"  ページ {page}: 取得失敗または0件")
+            break
+
+        all_titles.extend(titles)
+        print(f"  ページ {page}: +{len(titles)} 件 (合計 {len(all_titles)})")
+
+        if not has_next or not next_cursor:
+            break
+        cursor = next_cursor
+        time.sleep(0.4)  # 礼儀正しい間隔
+
+    # 重複除去
+    seen = set()
+    unique = []
+    for t in all_titles:
+        if t["id"] not in seen:
+            seen.add(t["id"])
+            unique.append(t)
+
+    print(f"[{provider_code}] 完了: {len(unique)} 件")
+    return unique[:max_count]
 
 
-def build_json(netflix_titles, prime_titles):
-    """取得結果をサイト用JSONに整形"""
-    def collect_genres(titles):
-        gset = set()
-        for t in titles:
-            for g in t.get("genres") or []:
-                gset.add(g)
-        return sorted(gset)
+def collect_genres(titles):
+    gset = set()
+    for t in titles:
+        for g in t.get("genres") or []:
+            gset.add(g)
+    return sorted(gset)
 
-    # PS Plus は別途実装が必要なので一旦プレースホルダ
+
+def main():
+    print(f"=== サブスク棚 データ更新 {now_jst().isoformat()} ===")
+
+    netflix = fetch_provider(PROVIDERS["netflix"])
+    prime = fetch_provider(PROVIDERS["prime"])
+
+    # PS Plus は別途（今はプレースホルダ）
     psplus = {
         "name": "PS Plus",
-        "genres": ["アクション", "RPG"],
+        "genres": [],
         "titles": []
     }
 
@@ -171,41 +200,25 @@ def build_json(netflix_titles, prime_titles):
         "services": {
             "netflix": {
                 "name": "Netflix",
-                "genres": collect_genres(netflix_titles),
-                "titles": netflix_titles
+                "genres": collect_genres(netflix),
+                "titles": netflix
             },
             "prime": {
                 "name": "Amazonプライム",
-                "genres": collect_genres(prime_titles),
-                "titles": prime_titles
+                "genres": collect_genres(prime),
+                "titles": prime
             },
             "psplus": psplus
         }
     }
-    return data
-
-
-def main():
-    print(f"=== サブスク棚 データ更新開始 {now_jst().isoformat()} ===")
-
-    netflix = fetch_justwatch_popular(PROVIDERS["netflix"], count=40)
-    print(f"Netflix: {len(netflix)} 件取得")
-
-    prime = fetch_justwatch_popular(PROVIDERS["prime"], count=40)
-    print(f"Prime  : {len(prime)} 件取得")
-
-    if not netflix and not prime:
-        print("両方失敗したためフォールバックデータを使用")
-        data = create_fallback_data()
-    else:
-        data = build_json(netflix, prime)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     print(f"書き出し完了: {OUTPUT_PATH}")
-    print("=== 更新終了 ===")
+    print(f"Netflix: {len(netflix)} / Prime: {len(prime)}")
+    print("=== 終了 ===")
 
 
 if __name__ == "__main__":
