@@ -24,7 +24,7 @@ LANGUAGE = "ja"
 
 PROVIDERS = {
     "netflix": "nfx",
-    "prime": "prv",
+    "prime": "amp",
 }
 
 HEADERS = {
