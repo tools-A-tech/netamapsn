@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サブスク棚 - 実装準備版（JSON連携）</title>
+  <style>
+    :root {
+      --accent-red: #e60012;
+      --text-dark: #222;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+      background: #f0f2f5;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+    .shop-header {
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .shop-logo {
+      font-size: 1.45rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .shop-logo span {
+      background: var(--accent-red);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+    .shop-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .shop-nav a {
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .shop-nav a:hover { background: var(--accent-red); }
+
+    .sample-banner {
+      background: #e8f5e9;
+      border: 1px solid #81c784;
+      color: #2e7d32;
+      padding: 12px 16px;
+      margin: 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .controls {
+      background: white;
+      margin: 0 16px 20px;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 58px;
+      z-index: 90;
+    }
+    .search-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    #searchInput {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .filter-group, .sort-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 0.78rem;
+      color: #666;
+      min-width: 70px;
+    }
+    .filter-btn, .sort-select {
+      border: 1px solid #ccc;
+      background: #f8f8f8;
+      color: #333;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: #1a1a2e;
+      color: white;
+      border-color: #1a1a2e;
+    }
+    .sort-select {
+      border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .status-line {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    .store-floor {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 16px 80px;
+    }
+    .corner {
+      margin-bottom: 36px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .corner-header {
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .corner-netflix .corner-header { background: linear-gradient(90deg, #e50914, #b20710); }
+    .corner-prime .corner-header { background: linear-gradient(90deg, #00a8e1, #0077b6); }
+    .corner-psplus .corner-header { background: linear-gradient(90deg, #003087, #0070d1); }
+    .corner-badge {
+      background: rgba(255,255,255,0.25);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+
+    .shelf-row {
+      padding: 14px 12px 18px;
+      background: linear-gradient(180deg, #f7f7f7 0%, #eaeaea 100%);
+      border-bottom: 1px solid #ddd;
+    }
+    .shelf-row:last-child { border-bottom: none; }
+    .shelf-label {
+      display: inline-block;
+      background: #333;
+      color: white;
+      font-size: 0.78rem;
+      padding: 3px 12px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      margin-left: 6px;
+    }
+    .shelf-label.popular { background: #e60012; }
+    .shelf-label.new { background: #00a86b; }
+    .shelf-label.leaving { background: #e74c3c; }
+
+    .shelf-track {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 4px 4px 10px;
+      scroll-snap-type: x mandatory;
+    }
+    .shelf-track::-webkit-scrollbar { height: 6px; }
+    .shelf-track::-webkit-scrollbar-thumb { background: #999; border-radius: 3px; }
+
+    .case {
+      flex: 0 0 118px;
+      width: 118px;
+      scroll-snap-align: start;
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .case:hover { transform: translateY(-5px); }
+    .case-cover {
+      height: 158px;
+      background: linear-gradient(135deg, #2c3e50, #4a5568);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: white;
+      padding: 8px;
+      position: relative;
+    }
+    .case-cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.75));
+    }
+    .case-title {
+      position: relative;
+      z-index: 2;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.25;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .case-badge {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      z-index: 3;
+      font-size: 0.62rem;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-weight: 700;
+      color: white;
+    }
+    .case-badge.new { background: #00a86b; }
+    .case-badge.leaving { background: #e74c3c; }
+    .case-meta {
+      padding: 5px 4px;
+      font-size: 0.65rem;
+      color: #555;
+      background: #fafafa;
+      border-top: 1px solid #eee;
+    }
+    .case-meta span {
+      display: inline-block;
+      background: #eee;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-right: 2px;
+    }
+
+    .empty-msg {
+      padding: 40px;
+      text-align: center;
+      color: #888;
+    }
+
+    .shop-footer {
+      text-align: center;
+      padding: 24px 16px;
+      color: #888;
+      font-size: 0.85rem;
+      background: #e8e8e8;
+    }
+
+    @media (max-width: 600px) {
+      .case { flex: 0 0 100px; width: 100px; }
+      .case-cover { height: 135px; }
+      .controls { top: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="shop-header">
+    <div class="shop-logo">サブスク棚 <span>実装準備</span></div>
+    <nav class="shop-nav">
+      <a href="#netflix">Netflix</a>
+      <a href="#prime">Amazon</a>
+      <a href="#psplus">PS Plus</a>
+    </nav>
+  </header>
+
+  <div class="sample-banner">
+    この版は <strong>JSONデータ連携</strong> の実装準備版です。<br>
+    実際の配信データを毎日更新する仕組みのベースになります。検索はタイトル優先で関係ないものが極力出ないように調整しています。
+  </div>
+
+  <div class="controls">
+    <div class="search-row">
+      <input type="text" id="searchInput" placeholder="タイトルで検索（関係ないものは極力出ません）">
+    </div>
+
+    <div class="filter-group">
+      <span class="filter-label">状態：</span>
+      <button class="filter-btn active" data-filter="all">すべて</button>
+      <button class="filter-btn" data-filter="new">新着</button>
+      <button class="filter-btn" data-filter="leaving">配信終了間近</button>
+    </div>
+
+    <div class="filter-group" id="genreButtons">
+      <span class="filter-label">ジャンル：</span>
+    </div>
+
+    <div class="sort-group">
+      <span class="filter-label">並べ替え：</span>
+      <select class="sort-select" id="sortSelect">
+        <option value="added_desc">登録順（新しい順）</option>
+        <option value="added_asc">登録順（古い順）</option>
+        <option value="year_desc">上映年（新しい順）</option>
+        <option value="year_asc">上映年（古い順）</option>
+        <option value="title">タイトル名</option>
+      </select>
+    </div>
+
+    <div class="status-line" id="statusLine">読み込み中...</div>
+  </div>
+
+  <main class="store-floor" id="storeFloor"></main>
+
+  <footer class="shop-footer">
+    サブスク棚 実装準備版<br>
+    データは data/titles.json から読み込みます。毎日更新する想定です。
+  </footer>
+
+  <script>
+    let allData = null;
+    let currentFilter = 'all';
+    let currentGenre = null;
+    let currentSort = 'added_desc';
+    let searchQuery = '';
+
+    async function loadData() {
+      try {
+        const res = await fetch('data/titles.json');
+        allData = await res.json();
+        buildGenreButtons();
+        render();
+      } catch (e) {
+        document.getElementById('statusLine').textContent = 'データ読み込みに失敗しました';
+        console.error(e);
+      }
+    }
+
+    function buildGenreButtons() {
+      const container = document.getElementById('genreButtons');
+      const label = container.querySelector('.filter-label');
+      container.innerHTML = '';
+      if (label) container.appendChild(label);
+
+      const genreSet = new Set();
+      Object.values(allData.services).forEach(svc => {
+        (svc.genres || []).forEach(g => genreSet.add(g));
+        (svc.titles || []).forEach(t => (t.genres || []).forEach(g => genreSet.add(g)));
+      });
+
+      [...genreSet].sort().forEach(g => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.genre = g;
+        btn.textContent = g;
+        btn.addEventListener('click', () => {
+          if (btn.classList.contains('active')) {
+            btn.classList.remove('active');
+            currentGenre = null;
+          } else {
+            container.querySelectorAll('[data-genre]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentGenre = g;
+          }
+          render();
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    function getFilteredTitles(serviceKey) {
+      const svc = allData.services[serviceKey];
+      if (!svc) return [];
+      let list = [...svc.titles];
+
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase().trim();
+        list = list.filter(t => {
+          const title = (t.title || '').toLowerCase();
+          const original = (t.original_title || '').toLowerCase();
+          return title.includes(q) || original.includes(q);
+        });
+      }
+
+      if (currentFilter === 'new') list = list.filter(t => isNew(t));
+      else if (currentFilter === 'leaving') list = list.filter(t => isLeaving(t));
+
+      if (currentGenre) list = list.filter(t => (t.genres || []).includes(currentGenre));
+
+      list.sort((a, b) => {
+        if (currentSort === 'added_desc') return (b.added_date || '').localeCompare(a.added_date || '');
+        if (currentSort === 'added_asc') return (a.added_date || '').localeCompare(b.added_date || '');
+        if (currentSort === 'year_desc') return (b.year || 0) - (a.year || 0);
+        if (currentSort === 'year_asc') return (a.year || 0) - (b.year || 0);
+        if (currentSort === 'title') return (a.title || '').localeCompare(b.title || '', 'ja');
+        return 0;
+      });
+      return list;
+    }
+
+    function isNew(t) {
+      if (!t.added_date) return false;
+      const added = new Date(t.added_date);
+      const now = new Date();
+      return (now - added) / (1000 * 60 * 60 * 24) <= 14;
+    }
+
+    function isLeaving(t) {
+      if (!t.leaving_date) return false;
+      const leave = new Date(t.leaving_date);
+      const now = new Date();
+      const diff = (leave - now) / (1000 * 60 * 60 * 24);
+      return diff >= 0 && diff <= 14;
+    }
+
+    function daysLeft(t) {
+      if (!t.leaving_date) return null;
+      return Math.ceil((new Date(t.leaving_date) - new Date()) / (1000 * 60 * 60 * 24));
+    }
+
+    function createCase(t) {
+      const div = document.createElement('div');
+      div.className = 'case';
+      div.onclick = () => { if (t.link) window.open(t.link, '_blank'); };
+
+      let badge = '';
+      if (isNew(t)) badge = '<div class="case-badge new">NEW</div>';
+      else if (isLeaving(t)) {
+        const d = daysLeft(t);
+        badge = '<div class="case-badge leaving">あと' + d + '日</div>';
+      }
+
+      const genres = (t.genres || []).slice(0, 2).map(g => '<span>' + g + '</span>').join('');
+      div.innerHTML = badge +
+        '<div class="case-cover"><div class="case-title">' + escapeHtml(t.title) + '</div></div>' +
+        '<div class="case-meta">' + genres + '</div>';
+      return div;
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function renderShelf(title, labelClass, titles) {
+      if (!titles.length) return '';
+      const casesHtml = titles.map(t => createCase(t).outerHTML).join('');
+      return '<div class="shelf-row"><div class="shelf-label ' + labelClass + '">' + title + '</div><div class="shelf-track">' + casesHtml + '</div></div>';
+    }
+
+    function render() {
+      const floor = document.getElementById('storeFloor');
+      if (!allData) return;
+
+      let html = '';
+
+      const nf = getFilteredTitles('netflix');
+      html += '<section class="corner corner-netflix" id="netflix"><div class="corner-header"><div>Netflixコーナー</div><div class="corner-badge">' + nf.length + '件</div></div>';
+      if (nf.length === 0) html += '<div class="empty-msg">該当するタイトルがありません</div>';
+      else {
+        html += renderShelf('表示中のタイトル', 'popular', nf);
+        const news = nf.filter(isNew);
+        const leaving = nf.filter(isLeaving);
+        if (news.length) html += renderShelf('新着', 'new', news);
+        if (leaving.length) html += renderShelf('配信終了間近', 'leaving', leaving);
+      }
+      html += '</section>';
+
+      const pr = getFilteredTitles('prime');
+      html += '<section class="corner corner-prime" id="prime"><div class="corner-header"><div>Amazonプライムコーナー</div><div class="corner-badge">' + pr.length + '件</div></div>';
+      if (pr.length === 0) html += '<div class="empty-msg">該当するタイトルがありません</div>';
+      else html += renderShelf('表示中のタイトル', 'popular', pr);
+      html += '</section>';
+
+      const ps = getFilteredTitles('psplus');
+      html += '<section class="corner corner-psplus" id="psplus"><div class="corner-header"><div>PS Plusコーナー</div><div class="corner-badge">' + ps.length + '件</div></div>';
+      if (ps.length === 0) html += '<div class="empty-msg">該当するタイトルがありません</div>';
+      else html += renderShelf('表示中のタイトル', 'popular', ps);
+      html += '</section>';
+
+      floor.innerHTML = html;
+
+      const total = nf.length + pr.length + ps.length;
+      let status = '表示中：' + total + '件';
+      if (searchQuery) status += ' ／ 検索「' + searchQuery + '」';
+      if (currentGenre) status += ' ／ ジャンル「' + currentGenre + '」';
+      if (currentFilter !== 'all') status += ' ／ ' + (currentFilter === 'new' ? '新着' : '終了間近');
+      document.getElementById('statusLine').textContent = status + ' ／ 更新: ' + (allData.updated_at || '-');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      render();
+    });
+
+    document.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      currentSort = e.target.value;
+      render();
+    });
+
+    loadData();
+  </script>
+</body>
+</html>

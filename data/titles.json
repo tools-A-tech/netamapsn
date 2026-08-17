@@ -1,0 +1,169 @@
+{
+  "updated_at": "2026-08-17T15:00:00+09:00",
+  "services": {
+    "netflix": {
+      "name": "Netflix",
+      "genres": ["アニメ", "ドラマ", "サスペンス", "戦争", "コメディ", "ホラー", "恋愛"],
+      "titles": [
+        {
+          "id": "nf001",
+          "title": "サンプル人気ドラマ",
+          "original_title": "Sample Popular Drama",
+          "type": "series",
+          "genres": ["ドラマ", "サスペンス"],
+          "year": 2025,
+          "release_date": "2025-03-15",
+          "added_date": "2026-08-10",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "サンプル説明文です。",
+          "link": "https://www.netflix.com/"
+        },
+        {
+          "id": "nf002",
+          "title": "新着アニメ作品",
+          "original_title": "New Anime Title",
+          "type": "series",
+          "genres": ["アニメ"],
+          "year": 2026,
+          "release_date": "2026-08-01",
+          "added_date": "2026-08-15",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "新着のサンプルアニメ。",
+          "link": "https://www.netflix.com/"
+        },
+        {
+          "id": "nf003",
+          "title": "終了間近サスペンス",
+          "original_title": "Leaving Soon Suspense",
+          "type": "movie",
+          "genres": ["サスペンス", "ドラマ"],
+          "year": 2023,
+          "release_date": "2023-11-20",
+          "added_date": "2025-12-01",
+          "leaving_date": "2026-08-25",
+          "poster": null,
+          "overview": "あと数日で配信終了のサンプル。",
+          "link": "https://www.netflix.com/"
+        },
+        {
+          "id": "nf004",
+          "title": "戦争映画サンプル",
+          "original_title": "War Movie Sample",
+          "type": "movie",
+          "genres": ["戦争"],
+          "year": 2024,
+          "release_date": "2024-06-10",
+          "added_date": "2026-07-20",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "戦争ジャンルのサンプル。",
+          "link": "https://www.netflix.com/"
+        },
+        {
+          "id": "nf005",
+          "title": "ミステリーアクション新作",
+          "original_title": "Mystery Action New",
+          "type": "movie",
+          "genres": ["ミステリーアクション", "サスペンス"],
+          "year": 2026,
+          "release_date": "2026-08-12",
+          "added_date": "2026-08-16",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "新しいジャンル名が付いたサンプル。",
+          "link": "https://www.netflix.com/"
+        }
+      ]
+    },
+    "prime": {
+      "name": "Amazonプライム",
+      "genres": ["ドラマ", "アニメ", "アクション", "コメディ"],
+      "titles": [
+        {
+          "id": "pr001",
+          "title": "プライム人気ドラマ",
+          "original_title": "Prime Popular Drama",
+          "type": "series",
+          "genres": ["ドラマ"],
+          "year": 2025,
+          "release_date": "2025-01-10",
+          "added_date": "2026-08-05",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "プライムのサンプルドラマ。",
+          "link": "https://www.amazon.co.jp/gp/video/"
+        },
+        {
+          "id": "pr002",
+          "title": "プライム新着アニメ",
+          "original_title": "Prime New Anime",
+          "type": "series",
+          "genres": ["アニメ"],
+          "year": 2026,
+          "release_date": "2026-07-30",
+          "added_date": "2026-08-14",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "新着アニメサンプル。",
+          "link": "https://www.amazon.co.jp/gp/video/"
+        }
+      ]
+    },
+    "psplus": {
+      "name": "PS Plus",
+      "genres": ["アクション", "RPG", "アドベンチャー", "シューティング"],
+      "titles": [
+        {
+          "id": "ps001",
+          "title": "アクションゲームサンプル",
+          "original_title": "Action Game Sample",
+          "type": "game",
+          "genres": ["アクション"],
+          "year": 2024,
+          "release_date": "2024-09-01",
+          "added_date": "2026-08-01",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "PS Plusのアクションゲーム。",
+          "link": "https://store.playstation.com/",
+          "platforms": ["PS5"],
+          "tier": "Extra"
+        },
+        {
+          "id": "ps002",
+          "title": "RPGサンプル",
+          "original_title": "RPG Sample",
+          "type": "game",
+          "genres": ["RPG"],
+          "year": 2023,
+          "release_date": "2023-05-20",
+          "added_date": "2026-07-15",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "RPGジャンルのサンプル。",
+          "link": "https://store.playstation.com/",
+          "platforms": ["PS4", "PS5"],
+          "tier": "Extra"
+        },
+        {
+          "id": "ps003",
+          "title": "新着アクション",
+          "original_title": "New Action Game",
+          "type": "game",
+          "genres": ["アクション"],
+          "year": 2026,
+          "release_date": "2026-08-10",
+          "added_date": "2026-08-12",
+          "leaving_date": null,
+          "poster": null,
+          "overview": "新しく追加されたアクション。",
+          "link": "https://store.playstation.com/",
+          "platforms": ["PS5"],
+          "tier": "Premium"
+        }
+      ]
+    }
+  }
+}
