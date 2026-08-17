@@ -271,6 +271,90 @@
       border-top: 1px solid #222;
       background: #000;
     }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: #333;
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 2;
+    }
+    .modal-close:hover { background: #555; }
+    .modal-poster {
+      width: 100%;
+      aspect-ratio: 2/3;
+      max-height: 320px;
+      object-fit: cover;
+      background: #222;
+      border-radius: 12px 12px 0 0;
+    }
+    .modal-body { padding: 16px 18px 20px; }
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      padding-right: 36px;
+      line-height: 1.35;
+    }
+    .modal-meta {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+    .modal-tags span {
+      font-size: 0.75rem;
+      background: #2a2a2a;
+      color: #ccc;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .modal-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .modal-actions a {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .btn-jw {
+      background: #e50914;
+      color: #fff;
+      flex: 1;
+    }
+    .btn-jw:hover { background: #f40d18; }
   </style>
 </head>
 <body>
@@ -283,7 +367,7 @@
       <button type="button" data-service="all" class="active">すべて</button>
       <button type="button" data-service="netflix">Netflix</button>
       <button type="button" data-service="prime" class="prime">Amazon</button>
-      <button type="button" data-service="psplus" class="ps">PS Plus</button>
+      
     </nav>
   </header>
 
@@ -324,6 +408,22 @@
   <main class="grid-section" id="mainArea">
     <!-- JS -->
   </main>
+
+  
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button type="button" class="modal-close" id="modalClose" aria-label="閉じる">×</button>
+      <img class="modal-poster" id="modalPoster" alt="">
+      <div class="modal-body">
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-tags" id="modalTags"></div>
+        <div class="modal-actions">
+          <a class="btn-jw" id="modalLink" href="#" target="_blank" rel="noopener">JustWatchで見る</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="shop-footer">
     netamapsn — Netflix / Amazon / PS Plus を探しやすく
@@ -468,7 +568,7 @@
     function createCard(t) {
       const div = document.createElement('div');
       div.className = 'card';
-      div.onclick = () => { if (t.link) window.open(t.link, '_blank'); };
+      div.onclick = () => openModal(t);
 
       let badge = '';
       if (isNew(t)) badge = '<div class="badge new">NEW</div>';
@@ -508,7 +608,7 @@
       let titleText = 'すべて';
       if (currentService === 'netflix') titleText = 'Netflix';
       if (currentService === 'prime') titleText = 'Amazonプライム';
-      if (currentService === 'psplus') titleText = 'PS Plus';
+      
 
       let html = '<div class="section-title">' + titleText +
         ' <span class="count">' + total + '件</span></div>';
@@ -634,6 +734,59 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }, { passive: true });
+
+
+    function openModal(t) {
+      const overlay = document.getElementById('modalOverlay');
+      const poster = document.getElementById('modalPoster');
+      const title = document.getElementById('modalTitle');
+      const meta = document.getElementById('modalMeta');
+      const tags = document.getElementById('modalTags');
+      const link = document.getElementById('modalLink');
+
+      const p = posterUrl(t);
+      if (p) {
+        poster.src = p;
+        poster.style.display = 'block';
+      } else {
+        poster.removeAttribute('src');
+        poster.style.display = 'none';
+      }
+      title.textContent = t.title || '';
+      let metaText = '';
+      if (t.original_title && t.original_title !== t.title) metaText += t.original_title;
+      if (t.year) metaText += (metaText ? ' ／ ' : '') + t.year;
+      meta.textContent = metaText;
+
+      tags.innerHTML = '';
+      (t.genres || []).forEach(g => {
+        const span = document.createElement('span');
+        span.textContent = g;
+        tags.appendChild(span);
+      });
+
+      if (t.link) {
+        link.href = t.link;
+        link.style.display = 'inline-block';
+      } else {
+        link.style.display = 'none';
+      }
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target.id === 'modalOverlay') closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
 
     loadData();
   </script>
