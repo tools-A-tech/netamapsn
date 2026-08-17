@@ -166,12 +166,12 @@
 
     .title-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px 12px;
     }
-    @media (max-width: 1100px) { .title-grid { grid-template-columns: repeat(4, 1fr); } }
-    @media (max-width: 800px)  { .title-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 520px)  { .title-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+    @media (max-width: 520px) {
+      .title-grid { gap: 10px 8px; }
+    }
 
     .card {
       background: #1a1a1a;
@@ -383,7 +383,7 @@
 
     <div class="genre-curtain">
       <button type="button" class="genre-toggle" id="genreToggle">
-        <span>ジャンル・機種</span>
+        <span>ジャンル</span>
         <span id="genreArrow">▼</span>
       </button>
       <div class="genre-body" id="genreBody">
@@ -430,7 +430,7 @@
   </footer>
 
   <script>
-    const PER_PAGE = 50;
+    const PER_PAGE = 48;
     let allData = null;
     let currentService = 'all';
     let currentFilter = 'all';
@@ -456,35 +456,13 @@
       const body = document.getElementById('genreBody');
       body.innerHTML = '';
       const genreSet = new Set();
-      const platformSet = new Set();
       Object.values(allData.services).forEach(svc => {
         (svc.genres || []).forEach(g => genreSet.add(g));
-        (svc.platforms || []).forEach(p => platformSet.add(p));
         (svc.titles || []).forEach(t => {
           (t.genres || []).forEach(g => genreSet.add(g));
-          (t.platforms || []).forEach(p => platformSet.add(p));
         });
       });
 
-      [...platformSet].sort().forEach(p => {
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn platform';
-        btn.dataset.platform = p;
-        btn.textContent = p;
-        btn.onclick = () => {
-          if (btn.classList.contains('active')) {
-            btn.classList.remove('active');
-            currentPlatform = null;
-          } else {
-            body.querySelectorAll('[data-platform]').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentPlatform = p;
-          }
-          currentPage = 1;
-          render();
-        };
-        body.appendChild(btn);
-      });
 
       [...genreSet].sort().forEach(g => {
         const btn = document.createElement('button');
@@ -578,7 +556,6 @@
       const style = poster ? 'background-image:url(\'' + poster + '\')' : '';
 
       let tags = '';
-      (t.platforms || []).forEach(p => { tags += '<span class="platform">' + p + '</span>'; });
       (t.genres || []).slice(0, 2).forEach(g => { tags += '<span>' + g + '</span>'; });
 
       div.innerHTML =
