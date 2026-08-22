@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-22T21:49:07.258979+09:00",
+  "updated_at": "2026-08-22T22:21:31.371951+09:00",
   "source": "justwatch",
   "services": {
     "netflix": {
@@ -3887,7 +3887,6 @@
           "original_title": "기생충",
           "type": "movie",
           "genres": [
-            "コメディ",
             "ドラマ",
             "スリラー"
           ],
@@ -3896,7 +3895,7 @@
           "release_date": null,
           "added_date": "2026-08-22",
           "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/303894645/{profile}/parasaito-ban-di-xia-nojia-zu.{format}",
+          "poster": "https://images.justwatch.com/poster/320937811/{profile}/parasaito-ban-di-xia-nojia-zu.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/parasaito-ban-di-xia-nojia-zu"
         },
@@ -4600,24 +4599,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/beef"
         },
         {
-          "id": "nfx_6930",
-          "title": "ドラゴン桜",
-          "original_title": "ドラゴン桜",
-          "type": "series",
-          "genres": [
-            "コメディ",
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 2005,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/242712767/{profile}/doragonying.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/doragonying"
-        },
-        {
           "id": "nfx_55668",
           "title": "ダーク",
           "original_title": "Dark",
@@ -4739,6 +4720,24 @@
           "poster": "https://images.justwatch.com/poster/318600134/{profile}/the-little-things-2021.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/the-little-things-2021"
+        },
+        {
+          "id": "nfx_6930",
+          "title": "ドラゴン桜",
+          "original_title": "ドラゴン桜",
+          "type": "series",
+          "genres": [
+            "コメディ",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 2005,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/242712767/{profile}/doragonying.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/doragonying"
         },
         {
           "id": "nfx_137220",
@@ -8049,7 +8048,7 @@
           "release_date": null,
           "added_date": "2026-08-22",
           "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/9592707/{profile}/huihusueremento.{format}",
+          "poster": "https://images.justwatch.com/poster/320954469/{profile}/huihusueremento.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/huihusueremento"
         },
@@ -10405,6 +10404,26 @@
           "link": "https://www.justwatch.com/jp/映画/ziyonuitsuku"
         },
         {
+          "id": "nfx_23894",
+          "title": "アメリカン・サイコ",
+          "original_title": "American Psycho",
+          "type": "movie",
+          "genres": [
+            "犯罪",
+            "ドラマ",
+            "ホラー",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 2000,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/315907393/{profile}/amerikansaiko.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/amerikansaiko"
+        },
+        {
           "id": "nfx_113248",
           "title": "トレインスポッティング",
           "original_title": "Trainspotting",
@@ -10421,26 +10440,6 @@
           "poster": "https://images.justwatch.com/poster/320954562/{profile}/trainspotting.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/trainspotting"
-        },
-        {
-          "id": "nfx_23894",
-          "title": "アメリカン・サイコ",
-          "original_title": "American Psycho",
-          "type": "movie",
-          "genres": [
-            "犯罪",
-            "ドラマ",
-            "ホラー",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 2000,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/230051126/{profile}/amerikansaiko.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/amerikansaiko"
         },
         {
           "id": "nfx_35465",
@@ -11099,25 +11098,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/yin-noshi-li-ninaritakute"
         },
         {
-          "id": "nfx_51565",
-          "title": "踊る大捜査線 THE MOVIE",
-          "original_title": "踊る大捜査線 THE MOVIE",
-          "type": "movie",
-          "genres": [
-            "アクション",
-            "コメディ",
-            "犯罪"
-          ],
-          "platforms": [],
-          "year": 1998,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/315610097/{profile}/yong-ruda-sou-cha-xian-the-movie.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/yong-ruda-sou-cha-xian-the-movie"
-        },
-        {
           "id": "nfx_460702",
           "title": "ホットスポット",
           "original_title": "ホットスポット",
@@ -11655,6 +11635,25 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/hua-li-naru-zu"
         },
         {
+          "id": "nfx_51565",
+          "title": "踊る大捜査線 THE MOVIE",
+          "original_title": "踊る大捜査線 THE MOVIE",
+          "type": "movie",
+          "genres": [
+            "アクション",
+            "コメディ",
+            "犯罪"
+          ],
+          "platforms": [],
+          "year": 1998,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/315610097/{profile}/yong-ruda-sou-cha-xian-the-movie.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/yong-ruda-sou-cha-xian-the-movie"
+        },
+        {
           "id": "nfx_75516",
           "title": "魔法使いの嫁",
           "original_title": "魔法使いの嫁",
@@ -11927,24 +11926,6 @@
           "link": "https://www.justwatch.com/jp/映画/hell-or-high-water"
         },
         {
-          "id": "nfx_116264",
-          "title": "夏の庭 The Friends",
-          "original_title": "夏の庭 The Friends",
-          "type": "movie",
-          "genres": [
-            "コメディ",
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 1994,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/307704231/{profile}/xia-noting-the-friends.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/xia-noting-the-friends"
-        },
-        {
           "id": "nfx_1177",
           "title": "1941",
           "original_title": "1941",
@@ -12174,6 +12155,24 @@
           "poster": "https://images.justwatch.com/poster/336393313/{profile}/frankenstein-0.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/frankenstein-0"
+        },
+        {
+          "id": "nfx_116264",
+          "title": "夏の庭 The Friends",
+          "original_title": "夏の庭 The Friends",
+          "type": "movie",
+          "genres": [
+            "コメディ",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 1994,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/307704231/{profile}/xia-noting-the-friends.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/xia-noting-the-friends"
         },
         {
           "id": "nfx_127515",
@@ -12823,25 +12822,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/new-amsterdam"
         },
         {
-          "id": "nfx_434395",
-          "title": "アガサ・クリスティのセブンダイヤルズ",
-          "original_title": "Agatha Christie's Seven Dials",
-          "type": "series",
-          "genres": [
-            "犯罪",
-            "ドラマ",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 2026,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/339274561/{profile}/agatha-christies-seven-dials.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/agatha-christies-seven-dials"
-        },
-        {
           "id": "nfx_1394285",
           "title": "ゴジラ-1.0",
           "original_title": "ゴジラ-1.0",
@@ -12860,6 +12840,25 @@
           "poster": "https://images.justwatch.com/poster/315606471/{profile}/gozira-1-0.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/gozira-1-0"
+        },
+        {
+          "id": "nfx_434395",
+          "title": "アガサ・クリスティのセブンダイヤルズ",
+          "original_title": "Agatha Christie's Seven Dials",
+          "type": "series",
+          "genres": [
+            "犯罪",
+            "ドラマ",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 2026,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/339274561/{profile}/agatha-christies-seven-dials.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/agatha-christies-seven-dials"
         },
         {
           "id": "nfx_186061",
@@ -13667,8 +13666,7 @@
           "original_title": "Blue Jay",
           "type": "movie",
           "genres": [
-            "ドラマ",
-            "ロマンス"
+            "ドラマ"
           ],
           "platforms": [],
           "year": 2016,
@@ -14837,26 +14835,6 @@
           "link": "https://www.justwatch.com/jp/映画/godzilla-x-kong-the-new-empire"
         },
         {
-          "id": "nfx_113234",
-          "title": "チャイニーズ・オデッセイ Part1 月光の恋",
-          "original_title": "西遊記第壹佰零壹回之月光寶盒",
-          "type": "movie",
-          "genres": [
-            "アクション",
-            "コメディ",
-            "ドラマ",
-            "ファンタジー"
-          ],
-          "platforms": [],
-          "year": 1995,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/333661799/{profile}/a-chinese-odyssey-part-one-pandoras-box.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/a-chinese-odyssey-part-one-pandoras-box"
-        },
-        {
           "id": "nfx_471712",
           "title": "タコピーの原罪",
           "original_title": "タコピーの原罪",
@@ -14934,6 +14912,26 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/seonggyungwan-seukaendeul"
         },
         {
+          "id": "nfx_113234",
+          "title": "チャイニーズ・オデッセイ Part1 月光の恋",
+          "original_title": "西遊記第壹佰零壹回之月光寶盒",
+          "type": "movie",
+          "genres": [
+            "アクション",
+            "コメディ",
+            "ドラマ",
+            "ファンタジー"
+          ],
+          "platforms": [],
+          "year": 1995,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/333661799/{profile}/a-chinese-odyssey-part-one-pandoras-box.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/a-chinese-odyssey-part-one-pandoras-box"
+        },
+        {
           "id": "nfx_88469",
           "title": "アンダーカバー: 秘密捜査官",
           "original_title": "Undercover",
@@ -14967,7 +14965,7 @@
           "release_date": null,
           "added_date": "2026-08-22",
           "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/138672965/{profile}/world-trade-center.{format}",
+          "poster": "https://images.justwatch.com/poster/250979950/{profile}/world-trade-center.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/world-trade-center"
         },
@@ -15828,7 +15826,6 @@
           "type": "movie",
           "genres": [
             "ドラマ",
-            "ミュージカル",
             "ロマンス"
           ],
           "platforms": [],
@@ -15836,7 +15833,7 @@
           "release_date": null,
           "added_date": "2026-08-22",
           "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/181400260/{profile}/moulin-rouge.{format}",
+          "poster": "https://images.justwatch.com/poster/320954714/{profile}/moulin-rouge.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/moulin-rouge"
         },
@@ -16076,6 +16073,24 @@
           "link": "https://www.justwatch.com/jp/映画/suzzanna-witchcraft"
         },
         {
+          "id": "nfx_869204",
+          "title": "ボイリング・ポイント／沸騰",
+          "original_title": "Boiling Point",
+          "type": "movie",
+          "genres": [
+            "ドラマ",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 2021,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/320936288/{profile}/boiling-point.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/boiling-point"
+        },
+        {
           "id": "nfx_109994",
           "title": "ハリー・ポッターと秘密の部屋",
           "original_title": "Harry Potter and the Chamber of Secrets",
@@ -16174,24 +16189,6 @@
           "poster": "https://images.justwatch.com/poster/311262110/{profile}/tui-shinozi.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/tui-shinozi"
-        },
-        {
-          "id": "nfx_869204",
-          "title": "ボイリング・ポイント／沸騰",
-          "original_title": "Boiling Point",
-          "type": "movie",
-          "genres": [
-            "ドラマ",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 2021,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/256245946/{profile}/boiling-point.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/boiling-point"
         },
         {
           "id": "nfx_2866152",
@@ -19696,28 +19693,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/nodame-cantabile"
         },
         {
-          "id": "nfx_28162",
-          "title": "機動戦士ガンダム 第08MS小隊",
-          "original_title": "機動戦士ガンダム 第08MS小隊",
-          "type": "series",
-          "genres": [
-            "アクション",
-            "アニメーション",
-            "ドラマ",
-            "ロマンス",
-            "サイエンスフィクション",
-            "戦争"
-          ],
-          "platforms": [],
-          "year": 1996,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/82827650/{profile}/mobile-suit-gundam-the-08th-ms-team.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/mobile-suit-gundam-the-08th-ms-team"
-        },
-        {
           "id": "nfx_252831",
           "title": "九尾狐伝",
           "original_title": "Gumihodyeon",
@@ -20120,6 +20095,28 @@
           "poster": "https://images.justwatch.com/poster/301483757/{profile}/mr-andmrs-sumisu.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/mr-andmrs-sumisu"
+        },
+        {
+          "id": "nfx_28162",
+          "title": "機動戦士ガンダム 第08MS小隊",
+          "original_title": "機動戦士ガンダム 第08MS小隊",
+          "type": "series",
+          "genres": [
+            "アクション",
+            "アニメーション",
+            "ドラマ",
+            "ロマンス",
+            "サイエンスフィクション",
+            "戦争"
+          ],
+          "platforms": [],
+          "year": 1996,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/82827650/{profile}/mobile-suit-gundam-the-08th-ms-team.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/mobile-suit-gundam-the-08th-ms-team"
         },
         {
           "id": "nfx_453536",
@@ -22191,23 +22188,6 @@
           "poster": "https://images.justwatch.com/poster/337826807/{profile}/attack-13.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/attack-13"
-        },
-        {
-          "id": "nfx_464792",
-          "title": "ウィズ・ラブ、メーガン",
-          "original_title": "With Love, Meghan",
-          "type": "series",
-          "genres": [
-            "Reality TV"
-          ],
-          "platforms": [],
-          "year": 2025,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/323532841/{profile}/with-love-meghan.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/with-love-meghan"
         },
         {
           "id": "nfx_170151",
@@ -25711,25 +25691,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/thanai-pisat"
         },
         {
-          "id": "nfx_469829",
-          "title": "生き存えしものたち",
-          "original_title": "The Survivors",
-          "type": "series",
-          "genres": [
-            "犯罪",
-            "ドラマ",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 2025,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/330761020/{profile}/the-survivors.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/the-survivors"
-        },
-        {
           "id": "nfx_18047",
           "title": "ゴジラ",
           "original_title": "ゴジラ",
@@ -25748,6 +25709,25 @@
           "poster": "https://images.justwatch.com/poster/335925634/{profile}/godzilla.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/godzilla"
+        },
+        {
+          "id": "nfx_469829",
+          "title": "生き存えしものたち",
+          "original_title": "The Survivors",
+          "type": "series",
+          "genres": [
+            "犯罪",
+            "ドラマ",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 2025,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/330761020/{profile}/the-survivors.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/the-survivors"
         },
         {
           "id": "nfx_358768",
@@ -26262,24 +26242,6 @@
           "link": "https://www.justwatch.com/jp/映画/inside-the-trustor-scandal"
         },
         {
-          "id": "nfx_478081",
-          "title": "Santita",
-          "original_title": "Santita",
-          "type": "series",
-          "genres": [
-            "ドラマ",
-            "ロマンス"
-          ],
-          "platforms": [],
-          "year": 2026,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/344363777/{profile}/santita.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/santita"
-        },
-        {
           "id": "nfx_463480",
           "title": "ローワン・アトキンソンのヒトvsアカチャン",
           "original_title": "Man vs Baby",
@@ -26315,6 +26277,24 @@
           "poster": "https://images.justwatch.com/poster/336521474/{profile}/death-whisperer-3.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/death-whisperer-3"
+        },
+        {
+          "id": "nfx_478081",
+          "title": "Santita",
+          "original_title": "Santita",
+          "type": "series",
+          "genres": [
+            "ドラマ",
+            "ロマンス"
+          ],
+          "platforms": [],
+          "year": 2026,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/344363777/{profile}/santita.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/santita"
         },
         {
           "id": "nfx_53081",
@@ -26625,6 +26605,26 @@
           "link": "https://www.justwatch.com/jp/映画/marriage-story"
         },
         {
+          "id": "nfx_158958",
+          "title": "GODZILLA ゴジラ",
+          "original_title": "Godzilla",
+          "type": "movie",
+          "genres": [
+            "アクション",
+            "ドラマ",
+            "スリラー",
+            "サイエンスフィクション"
+          ],
+          "platforms": [],
+          "year": 2014,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/319941874/{profile}/godzilla-gozira.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/godzilla-gozira"
+        },
+        {
           "id": "nfx_224600",
           "title": "orange-オレンジ-",
           "original_title": "orange-オレンジ-",
@@ -26660,26 +26660,6 @@
           "poster": "https://images.justwatch.com/poster/314139392/{profile}/mei-shan.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/mei-shan"
-        },
-        {
-          "id": "nfx_158958",
-          "title": "GODZILLA ゴジラ",
-          "original_title": "Godzilla",
-          "type": "movie",
-          "genres": [
-            "アクション",
-            "ドラマ",
-            "スリラー",
-            "サイエンスフィクション"
-          ],
-          "platforms": [],
-          "year": 2014,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/245164950/{profile}/godzilla-gozira.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/godzilla-gozira"
         },
         {
           "id": "nfx_1602355",
@@ -27445,25 +27425,6 @@
           "link": "https://www.justwatch.com/jp/映画/how-to-make-millions-before-grandma-dies"
         },
         {
-          "id": "nfx_109142",
-          "title": "ゴジラの逆襲",
-          "original_title": "ゴジラの逆襲",
-          "type": "movie",
-          "genres": [
-            "アクション",
-            "ホラー",
-            "サイエンスフィクション"
-          ],
-          "platforms": [],
-          "year": 1955,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/320221781/{profile}/godzilla-raids-again.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/godzilla-raids-again"
-        },
-        {
           "id": "nfx_60490",
           "title": "美味しんぼ",
           "original_title": "美味しんぼ",
@@ -27516,6 +27477,25 @@
           "poster": "https://images.justwatch.com/poster/341598426/{profile}/jiu-shi-sui-he-gamedetai.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/jiu-shi-sui-he-gamedetai"
+        },
+        {
+          "id": "nfx_109142",
+          "title": "ゴジラの逆襲",
+          "original_title": "ゴジラの逆襲",
+          "type": "movie",
+          "genres": [
+            "アクション",
+            "ホラー",
+            "サイエンスフィクション"
+          ],
+          "platforms": [],
+          "year": 1955,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/320221781/{profile}/godzilla-raids-again.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/godzilla-raids-again"
         },
         {
           "id": "nfx_309453",
@@ -30708,24 +30688,6 @@
           "link": "https://www.justwatch.com/jp/映画/chong-rewochao-etashi-tachi-shi-jie-henoji-lu"
         },
         {
-          "id": "nfx_391431",
-          "title": "ウンジュンとサンヨン",
-          "original_title": "Eunjungkwa Sangyeon",
-          "type": "series",
-          "genres": [
-            "ドラマ",
-            "ロマンス"
-          ],
-          "platforms": [],
-          "year": 2025,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/334353333/{profile}/you-and-everything-else.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/you-and-everything-else"
-        },
-        {
           "id": "nfx_330708",
           "title": "あなたは誰? エリン・カーター",
           "original_title": "Who Is Erin Carter?",
@@ -30744,6 +30706,24 @@
           "poster": "https://images.justwatch.com/poster/306989712/{profile}/anatahashui-erinkata.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/anatahashui-erinkata"
+        },
+        {
+          "id": "nfx_391431",
+          "title": "ウンジュンとサンヨン",
+          "original_title": "Eunjungkwa Sangyeon",
+          "type": "series",
+          "genres": [
+            "ドラマ",
+            "ロマンス"
+          ],
+          "platforms": [],
+          "year": 2025,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/334353333/{profile}/you-and-everything-else.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/you-and-everything-else"
         },
         {
           "id": "nfx_1376512",
@@ -32264,27 +32244,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/eoneu-nal"
         },
         {
-          "id": "nfx_312071",
-          "title": "極主夫道",
-          "original_title": "極主夫道",
-          "type": "series",
-          "genres": [
-            "アクション",
-            "アニメーション",
-            "コメディ",
-            "犯罪",
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 2021,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/243969311/{profile}/ji-zhu-fu-dao-2021.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/ji-zhu-fu-dao-2021"
-        },
-        {
           "id": "nfx_450779",
           "title": "ババンババンバンバンパイア",
           "original_title": "ババンババンバンバンパイア",
@@ -32322,6 +32281,27 @@
           "poster": "https://images.justwatch.com/poster/245501398/{profile}/letters-to-juliet.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/letters-to-juliet"
+        },
+        {
+          "id": "nfx_312071",
+          "title": "極主夫道",
+          "original_title": "極主夫道",
+          "type": "series",
+          "genres": [
+            "アクション",
+            "アニメーション",
+            "コメディ",
+            "犯罪",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 2021,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/243969311/{profile}/ji-zhu-fu-dao-2021.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/ji-zhu-fu-dao-2021"
         },
         {
           "id": "nfx_271951",
@@ -34066,7 +34046,7 @@
           "release_date": null,
           "added_date": "2026-08-22",
           "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/341058367/{profile}/godzilla-2000.{format}",
+          "poster": "https://images.justwatch.com/poster/320237258/{profile}/godzilla-2000.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/godzilla-2000"
         },
@@ -34589,6 +34569,24 @@
           "poster": "https://images.justwatch.com/poster/329330368/{profile}/a-tragedy-foretold-flight-3054.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/a-tragedy-foretold-flight-3054"
+        },
+        {
+          "id": "nfx_512535",
+          "title": "スゥパスターになりたいの",
+          "original_title": "วันหนึ่งจะเป็นซุปตาร์",
+          "type": "series",
+          "genres": [
+            "コメディ",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 2026,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/348248647/{profile}/suupasutaninaritaino.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/suupasutaninaritaino"
         }
       ]
     },
@@ -40857,24 +40855,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/chiensoman"
         },
         {
-          "id": "amp_6930",
-          "title": "ドラゴン桜",
-          "original_title": "ドラゴン桜",
-          "type": "series",
-          "genres": [
-            "コメディ",
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 2005,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/242712767/{profile}/doragonying.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/doragonying"
-        },
-        {
           "id": "amp_816531",
           "title": "ハルビン",
           "original_title": "하얼빈",
@@ -41183,6 +41163,24 @@
           "poster": "https://images.justwatch.com/poster/344653776/{profile}/freelance.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/freelance"
+        },
+        {
+          "id": "amp_6930",
+          "title": "ドラゴン桜",
+          "original_title": "ドラゴン桜",
+          "type": "series",
+          "genres": [
+            "コメディ",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 2005,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/242712767/{profile}/doragonying.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/doragonying"
         },
         {
           "id": "amp_1287858",
@@ -41541,7 +41539,7 @@
           "release_date": null,
           "added_date": "2026-08-22",
           "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/324639095/{profile}/alien-romulus.{format}",
+          "poster": "https://images.justwatch.com/poster/317137795/{profile}/alien-romulus.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/alien-romulus"
         },
@@ -43224,24 +43222,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/the-killing"
         },
         {
-          "id": "amp_19390",
-          "title": "弁護士のくず",
-          "original_title": "弁護士のくず",
-          "type": "series",
-          "genres": [
-            "コメディ",
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 2006,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/320409482/{profile}/bian-hu-shi-nokuzu.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/bian-hu-shi-nokuzu"
-        },
-        {
           "id": "amp_28311",
           "title": "銀河英雄伝説",
           "original_title": "銀河英雄伝説",
@@ -43261,6 +43241,24 @@
           "poster": "https://images.justwatch.com/poster/347472790/{profile}/yin-he-ying-xiong-chuan-shuo.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/yin-he-ying-xiong-chuan-shuo"
+        },
+        {
+          "id": "amp_19390",
+          "title": "弁護士のくず",
+          "original_title": "弁護士のくず",
+          "type": "series",
+          "genres": [
+            "コメディ",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 2006,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/320409482/{profile}/bian-hu-shi-nokuzu.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/bian-hu-shi-nokuzu"
         },
         {
           "id": "amp_307653",
@@ -43431,23 +43429,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/ling-min-0ren-sutatonobian-jing-ling-zhu-yang"
         },
         {
-          "id": "amp_287492",
-          "title": "家なき子",
-          "original_title": "家なき子",
-          "type": "series",
-          "genres": [
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 1994,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/322599443/{profile}/jia-nakizi-1994.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/jia-nakizi-1994"
-        },
-        {
           "id": "amp_475412",
           "title": "透明人間",
           "original_title": "The Invisible Man",
@@ -43466,28 +43447,6 @@
           "poster": "https://images.justwatch.com/poster/170389653/{profile}/the-invisible-man.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/the-invisible-man"
-        },
-        {
-          "id": "amp_20738",
-          "title": "らんま1/2",
-          "original_title": "らんま1/2",
-          "type": "series",
-          "genres": [
-            "アクション",
-            "アニメーション",
-            "コメディ",
-            "ファンタジー",
-            "ロマンス",
-            "サイエンスフィクション"
-          ],
-          "platforms": [],
-          "year": 1989,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/308535816/{profile}/ranma-1-2.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/ranma-1-2"
         },
         {
           "id": "amp_1120392",
@@ -43729,6 +43688,28 @@
           "poster": "https://images.justwatch.com/poster/32459555/{profile}/2001-a-space-odyssey.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/2001-a-space-odyssey"
+        },
+        {
+          "id": "amp_20738",
+          "title": "らんま1/2",
+          "original_title": "らんま1/2",
+          "type": "series",
+          "genres": [
+            "アクション",
+            "アニメーション",
+            "コメディ",
+            "ファンタジー",
+            "ロマンス",
+            "サイエンスフィクション"
+          ],
+          "platforms": [],
+          "year": 1989,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/308535816/{profile}/ranma-1-2.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/ranma-1-2"
         },
         {
           "id": "amp_56420",
@@ -46367,6 +46348,23 @@
           "link": "https://www.justwatch.com/jp/映画/the-brutalist"
         },
         {
+          "id": "amp_287492",
+          "title": "家なき子",
+          "original_title": "家なき子",
+          "type": "series",
+          "genres": [
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 1994,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/322599443/{profile}/jia-nakizi-1994.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/jia-nakizi-1994"
+        },
+        {
           "id": "amp_91096",
           "title": "きのう何食べた？",
           "original_title": "きのう何食べた？",
@@ -47513,27 +47511,9 @@
           "release_date": null,
           "added_date": "2026-08-22",
           "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/235805025/{profile}/transformers-dark-of-the-moon.{format}",
+          "poster": "https://images.justwatch.com/poster/138994880/{profile}/transformers-dark-of-the-moon.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/transformers-dark-of-the-moon"
-        },
-        {
-          "id": "amp_50026",
-          "title": "自由を我等に",
-          "original_title": "À nous la liberté",
-          "type": "movie",
-          "genres": [
-            "コメディ",
-            "ヨーロッパで製作"
-          ],
-          "platforms": [],
-          "year": 1931,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/35717259/{profile}/a-nous-la-liberte.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/a-nous-la-liberte"
         },
         {
           "id": "amp_1401284",
@@ -47946,6 +47926,24 @@
           "poster": "https://images.justwatch.com/poster/344623380/{profile}/feng-nomazimu.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/feng-nomazimu"
+        },
+        {
+          "id": "amp_50026",
+          "title": "自由を我等に",
+          "original_title": "À nous la liberté",
+          "type": "movie",
+          "genres": [
+            "コメディ",
+            "ヨーロッパで製作"
+          ],
+          "platforms": [],
+          "year": 1931,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/35717259/{profile}/a-nous-la-liberte.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/a-nous-la-liberte"
         },
         {
           "id": "amp_138641",
@@ -48400,25 +48398,6 @@
           "link": "https://www.justwatch.com/jp/映画/the-black-phone"
         },
         {
-          "id": "amp_78659",
-          "title": "幸福（しあわせ）",
-          "original_title": "Le Bonheur",
-          "type": "movie",
-          "genres": [
-            "ドラマ",
-            "ロマンス",
-            "ヨーロッパで製作"
-          ],
-          "platforms": [],
-          "year": 1965,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/345886139/{profile}/le-bonheur.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/le-bonheur"
-        },
-        {
           "id": "amp_34661",
           "title": "美男ですね",
           "original_title": "美男ですね",
@@ -48722,6 +48701,25 @@
           "poster": "https://images.justwatch.com/poster/187161014/{profile}/mapa-tu-ran-shi-matsutamu-qin-ye.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/mapa-tu-ran-shi-matsutamu-qin-ye"
+        },
+        {
+          "id": "amp_78659",
+          "title": "幸福（しあわせ）",
+          "original_title": "Le Bonheur",
+          "type": "movie",
+          "genres": [
+            "ドラマ",
+            "ロマンス",
+            "ヨーロッパで製作"
+          ],
+          "platforms": [],
+          "year": 1965,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/345886139/{profile}/le-bonheur.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/le-bonheur"
         },
         {
           "id": "amp_224975",
@@ -49126,25 +49124,6 @@
           "link": "https://www.justwatch.com/jp/映画/ziyango-xi-garezaruzhe"
         },
         {
-          "id": "amp_22788",
-          "title": "エピデミック～伝染病",
-          "original_title": "Epidemic",
-          "type": "movie",
-          "genres": [
-            "ドラマ",
-            "ホラー",
-            "ヨーロッパで製作"
-          ],
-          "platforms": [],
-          "year": 1987,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/301265663/{profile}/epidemitsuku-chuan-ran-bing.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/epidemitsuku-chuan-ran-bing"
-        },
-        {
           "id": "amp_1477040",
           "title": "エイリアン・ハンティング",
           "original_title": "Alien Hunt",
@@ -49466,6 +49445,25 @@
           "poster": "https://images.justwatch.com/poster/344143717/{profile}/tao-gashitayu-hada-kikatsutagadiao-riagetayu-gada-kisugitajian.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/tao-gashitayu-hada-kikatsutagadiao-riagetayu-gada-kisugitajian"
+        },
+        {
+          "id": "amp_22788",
+          "title": "エピデミック～伝染病",
+          "original_title": "Epidemic",
+          "type": "movie",
+          "genres": [
+            "ドラマ",
+            "ホラー",
+            "ヨーロッパで製作"
+          ],
+          "platforms": [],
+          "year": 1987,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/301265663/{profile}/epidemitsuku-chuan-ran-bing.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/epidemitsuku-chuan-ran-bing"
         },
         {
           "id": "amp_232801",
@@ -50040,25 +50038,6 @@
           "poster": "https://images.justwatch.com/poster/43601007/{profile}/zombieland.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/zombieland"
-        },
-        {
-          "id": "amp_51565",
-          "title": "踊る大捜査線 THE MOVIE",
-          "original_title": "踊る大捜査線 THE MOVIE",
-          "type": "movie",
-          "genres": [
-            "アクション",
-            "コメディ",
-            "犯罪"
-          ],
-          "platforms": [],
-          "year": 1998,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/315610097/{profile}/yong-ruda-sou-cha-xian-the-movie.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/yong-ruda-sou-cha-xian-the-movie"
         },
         {
           "id": "amp_251033",
@@ -50855,6 +50834,25 @@
           "poster": "https://images.justwatch.com/poster/346670420/{profile}/petals-of-reincarnation.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/petals-of-reincarnation"
+        },
+        {
+          "id": "amp_51565",
+          "title": "踊る大捜査線 THE MOVIE",
+          "original_title": "踊る大捜査線 THE MOVIE",
+          "type": "movie",
+          "genres": [
+            "アクション",
+            "コメディ",
+            "犯罪"
+          ],
+          "platforms": [],
+          "year": 1998,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/315610097/{profile}/yong-ruda-sou-cha-xian-the-movie.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/yong-ruda-sou-cha-xian-the-movie"
         },
         {
           "id": "amp_34554",
@@ -52393,24 +52391,6 @@
           "link": "https://www.justwatch.com/jp/映画/return-to-silent-hill"
         },
         {
-          "id": "amp_206726",
-          "title": "アンチャーテッド",
-          "original_title": "Uncharted",
-          "type": "movie",
-          "genres": [
-            "アクション",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 2022,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/285693190/{profile}/uncharted.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/uncharted"
-        },
-        {
           "id": "amp_1394285",
           "title": "ゴジラ-1.0",
           "original_title": "ゴジラ-1.0",
@@ -52429,6 +52409,24 @@
           "poster": "https://images.justwatch.com/poster/315606471/{profile}/gozira-1-0.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/gozira-1-0"
+        },
+        {
+          "id": "amp_206726",
+          "title": "アンチャーテッド",
+          "original_title": "Uncharted",
+          "type": "movie",
+          "genres": [
+            "アクション",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 2022,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/285693190/{profile}/uncharted.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/uncharted"
         },
         {
           "id": "amp_186061",
@@ -54436,24 +54434,6 @@
           "link": "https://www.justwatch.com/jp/映画/amaruhui-nu-shen-nobao-chou"
         },
         {
-          "id": "amp_15926",
-          "title": "The Initiation of Sarah",
-          "original_title": "The Initiation of Sarah",
-          "type": "movie",
-          "genres": [
-            "ホラー",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 1978,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/290725240/{profile}/the-initiation-of-sarah-1978.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/the-initiation-of-sarah-1978"
-        },
-        {
           "id": "amp_836126",
           "title": "ファーザー",
           "original_title": "The Father",
@@ -54821,6 +54801,24 @@
           "poster": "https://images.justwatch.com/poster/125542183/{profile}/ozunomo-fa-shi.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/ozunomo-fa-shi"
+        },
+        {
+          "id": "amp_15926",
+          "title": "The Initiation of Sarah",
+          "original_title": "The Initiation of Sarah",
+          "type": "movie",
+          "genres": [
+            "ホラー",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 1978,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/290725240/{profile}/the-initiation-of-sarah-1978.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/the-initiation-of-sarah-1978"
         },
         {
           "id": "amp_2889556",
@@ -56411,26 +56409,6 @@
           "link": "https://www.justwatch.com/jp/映画/the-lincoln-lawyer"
         },
         {
-          "id": "amp_839727",
-          "title": "音楽",
-          "original_title": "音楽",
-          "type": "movie",
-          "genres": [
-            "アニメーション",
-            "コメディ",
-            "ドラマ",
-            "ミュージカル"
-          ],
-          "platforms": [],
-          "year": 2020,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/306977030/{profile}/yin-le.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/yin-le"
-        },
-        {
           "id": "amp_21984",
           "title": "Ansatsu Kyôshitsu",
           "original_title": "Ansatsu kyôshitsu",
@@ -56915,6 +56893,26 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/e-ren-chuan-ji"
         },
         {
+          "id": "amp_27980",
+          "title": "ガールズ&パンツァー",
+          "original_title": "ガールズ&パンツァー",
+          "type": "series",
+          "genres": [
+            "アクション",
+            "アニメーション",
+            "コメディ",
+            "スポーツ"
+          ],
+          "platforms": [],
+          "year": 2012,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/242800366/{profile}/garuzuandpantsua.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/garuzuandpantsua"
+        },
+        {
           "id": "amp_1226692",
           "title": "グランツーリスモ",
           "original_title": "Gran Turismo",
@@ -56932,6 +56930,26 @@
           "poster": "https://images.justwatch.com/poster/305331469/{profile}/gurantsurisumo.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/gurantsurisumo"
+        },
+        {
+          "id": "amp_839727",
+          "title": "音楽",
+          "original_title": "音楽",
+          "type": "movie",
+          "genres": [
+            "アニメーション",
+            "コメディ",
+            "ドラマ",
+            "ミュージカル"
+          ],
+          "platforms": [],
+          "year": 2020,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/306977030/{profile}/yin-le.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/yin-le"
         },
         {
           "id": "amp_106353",
@@ -57011,26 +57029,6 @@
           "poster": "https://images.justwatch.com/poster/320856021/{profile}/ai-shiteirutoyan-tsutekure.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/ai-shiteirutoyan-tsutekure"
-        },
-        {
-          "id": "amp_27980",
-          "title": "ガールズ&パンツァー",
-          "original_title": "ガールズ&パンツァー",
-          "type": "series",
-          "genres": [
-            "アクション",
-            "アニメーション",
-            "コメディ",
-            "スポーツ"
-          ],
-          "platforms": [],
-          "year": 2012,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/289932367/{profile}/garuzuandpantsua.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/garuzuandpantsua"
         },
         {
           "id": "amp_311348",
@@ -57409,26 +57407,6 @@
           "link": "https://www.justwatch.com/jp/映画/kingdom-ii-to-distant-lands"
         },
         {
-          "id": "amp_18213",
-          "title": "現金に手を出すな",
-          "original_title": "Touchez pas au grisbi",
-          "type": "movie",
-          "genres": [
-            "犯罪",
-            "ドラマ",
-            "スリラー",
-            "ヨーロッパで製作"
-          ],
-          "platforms": [],
-          "year": 1954,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/320221449/{profile}/xian-jin-nishou-wochu-suna.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/xian-jin-nishou-wochu-suna"
-        },
-        {
           "id": "amp_454930",
           "title": "私を喰べたい、ひとでなし",
           "original_title": "私を喰べたい、ひとでなし",
@@ -57600,6 +57578,26 @@
           "link": "https://www.justwatch.com/jp/映画/the-killing-of-a-sacred-deer"
         },
         {
+          "id": "amp_18213",
+          "title": "現金に手を出すな",
+          "original_title": "Touchez pas au grisbi",
+          "type": "movie",
+          "genres": [
+            "犯罪",
+            "ドラマ",
+            "スリラー",
+            "ヨーロッパで製作"
+          ],
+          "platforms": [],
+          "year": 1954,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/320221449/{profile}/xian-jin-nishou-wochu-suna.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/xian-jin-nishou-wochu-suna"
+        },
+        {
           "id": "amp_161164",
           "title": "フライトプラン",
           "original_title": "Flightplan",
@@ -57689,25 +57687,6 @@
           "poster": "https://images.justwatch.com/poster/324520142/{profile}/dakarayan-tsutaziyanaino.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/dakarayan-tsutaziyanaino"
-        },
-        {
-          "id": "amp_83540",
-          "title": "教授と美女",
-          "original_title": "Ball of Fire",
-          "type": "movie",
-          "genres": [
-            "コメディ",
-            "犯罪",
-            "ロマンス"
-          ],
-          "platforms": [],
-          "year": 1941,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/180139460/{profile}/ball-of-fire.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/ball-of-fire"
         },
         {
           "id": "amp_266672",
@@ -57818,6 +57797,25 @@
           "poster": "https://images.justwatch.com/poster/316577032/{profile}/sutatoretsuku3-misutasupotsukuwotan-se.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/sutatoretsuku3-misutasupotsukuwotan-se"
+        },
+        {
+          "id": "amp_83540",
+          "title": "教授と美女",
+          "original_title": "Ball of Fire",
+          "type": "movie",
+          "genres": [
+            "コメディ",
+            "犯罪",
+            "ロマンス"
+          ],
+          "platforms": [],
+          "year": 1941,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/180139460/{profile}/ball-of-fire.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/ball-of-fire"
         },
         {
           "id": "amp_424050",
@@ -58091,6 +58089,24 @@
           "link": "https://www.justwatch.com/jp/映画/the-fabelmans"
         },
         {
+          "id": "amp_869204",
+          "title": "ボイリング・ポイント／沸騰",
+          "original_title": "Boiling Point",
+          "type": "movie",
+          "genres": [
+            "ドラマ",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 2021,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/320936288/{profile}/boiling-point.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/boiling-point"
+        },
+        {
           "id": "amp_109994",
           "title": "ハリー・ポッターと秘密の部屋",
           "original_title": "Harry Potter and the Chamber of Secrets",
@@ -58164,24 +58180,6 @@
           "poster": "https://images.justwatch.com/poster/301963598/{profile}/violent-night.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/violent-night"
-        },
-        {
-          "id": "amp_869204",
-          "title": "ボイリング・ポイント／沸騰",
-          "original_title": "Boiling Point",
-          "type": "movie",
-          "genres": [
-            "ドラマ",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 2021,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/256245946/{profile}/boiling-point.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/boiling-point"
         },
         {
           "id": "amp_352996",
@@ -58451,25 +58449,6 @@
           "poster": "https://images.justwatch.com/poster/196626828/{profile}/berserk.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/berserk"
-        },
-        {
-          "id": "amp_124094",
-          "title": "死亡の塔",
-          "original_title": "死亡塔",
-          "type": "movie",
-          "genres": [
-            "アクション",
-            "犯罪",
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 1981,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/326030171/{profile}/si-wang-ta.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/si-wang-ta"
         },
         {
           "id": "amp_41975",
@@ -58803,6 +58782,25 @@
           "link": "https://www.justwatch.com/jp/映画/burubado"
         },
         {
+          "id": "amp_124094",
+          "title": "死亡の塔",
+          "original_title": "死亡塔",
+          "type": "movie",
+          "genres": [
+            "アクション",
+            "犯罪",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 1981,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/326030171/{profile}/si-wang-ta.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/si-wang-ta"
+        },
+        {
           "id": "amp_86412",
           "title": "スピーシーズX 美しき寄生獣",
           "original_title": "Decoys",
@@ -59055,6 +59053,24 @@
           "link": "https://www.justwatch.com/jp/映画/ye-niao-tachigati-ku"
         },
         {
+          "id": "amp_27677",
+          "title": "赤ちゃん泥棒",
+          "original_title": "Raising Arizona",
+          "type": "movie",
+          "genres": [
+            "コメディ",
+            "犯罪"
+          ],
+          "platforms": [],
+          "year": 1987,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/262959512/{profile}/raising-arizona.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/raising-arizona"
+        },
+        {
           "id": "amp_379570",
           "title": "マイティ・ナイン",
           "original_title": "The Mighty Nein",
@@ -59092,24 +59108,6 @@
           "poster": "https://images.justwatch.com/poster/346929652/{profile}/ancora-piu-sexy.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/映画/ancora-piu-sexy"
-        },
-        {
-          "id": "amp_27677",
-          "title": "赤ちゃん泥棒",
-          "original_title": "Raising Arizona",
-          "type": "movie",
-          "genres": [
-            "コメディ",
-            "犯罪"
-          ],
-          "platforms": [],
-          "year": 1987,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/262959512/{profile}/raising-arizona.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/raising-arizona"
         },
         {
           "id": "amp_168802",
@@ -60751,25 +60749,6 @@
           "link": "https://www.justwatch.com/jp/映画/boruzu-atsupu"
         },
         {
-          "id": "amp_133650",
-          "title": "狂った一頁",
-          "original_title": "狂った一頁",
-          "type": "movie",
-          "genres": [
-            "ドラマ",
-            "ホラー",
-            "スリラー"
-          ],
-          "platforms": [],
-          "year": 1926,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/300809294/{profile}/kuang-tsuta-ye.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/kuang-tsuta-ye"
-        },
-        {
           "id": "amp_91648",
           "title": "悪党 ～加害者追跡調査～",
           "original_title": "Akutoo Kagaisha Tsuiseki Chousa",
@@ -61031,6 +61010,25 @@
           "poster": "https://images.justwatch.com/poster/265186153/{profile}/kaiji.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/kaiji"
+        },
+        {
+          "id": "amp_133650",
+          "title": "狂った一頁",
+          "original_title": "狂った一頁",
+          "type": "movie",
+          "genres": [
+            "ドラマ",
+            "ホラー",
+            "スリラー"
+          ],
+          "platforms": [],
+          "year": 1926,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/300809294/{profile}/kuang-tsuta-ye.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/kuang-tsuta-ye"
         },
         {
           "id": "amp_413655",
@@ -63881,24 +63879,6 @@
           "link": "https://www.justwatch.com/jp/テレビ番組/sutoroboetsuzi-season1"
         },
         {
-          "id": "amp_108372",
-          "title": "ジェーン・エア",
-          "original_title": "Jane Eyre",
-          "type": "movie",
-          "genres": [
-            "ドラマ",
-            "ロマンス"
-          ],
-          "platforms": [],
-          "year": 1943,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/308554051/{profile}/jane-eyre-1943.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/jane-eyre-1943"
-        },
-        {
           "id": "amp_318206",
           "title": "ザ・アウトロー",
           "original_title": "Den of Thieves",
@@ -64351,6 +64331,24 @@
           "poster": "https://images.justwatch.com/poster/307380636/{profile}/fu-fu-noshi-jie.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/fu-fu-noshi-jie"
+        },
+        {
+          "id": "amp_108372",
+          "title": "ジェーン・エア",
+          "original_title": "Jane Eyre",
+          "type": "movie",
+          "genres": [
+            "ドラマ",
+            "ロマンス"
+          ],
+          "platforms": [],
+          "year": 1943,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/308554051/{profile}/jane-eyre-1943.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/jane-eyre-1943"
         },
         {
           "id": "amp_143969",
@@ -66291,25 +66289,6 @@
           "link": "https://www.justwatch.com/jp/映画/before-dawn"
         },
         {
-          "id": "amp_515",
-          "title": "ブルックリン横丁",
-          "original_title": "A Tree Grows in Brooklyn",
-          "type": "movie",
-          "genres": [
-            "ドラマ",
-            "ファミリー",
-            "ロマンス"
-          ],
-          "platforms": [],
-          "year": 1945,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/290293672/{profile}/burutsukurinheng-ting.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/映画/burutsukurinheng-ting"
-        },
-        {
           "id": "amp_1356395",
           "title": "ダブル・スナイパー",
           "original_title": "Take Cover",
@@ -66433,6 +66412,25 @@
           "link": "https://www.justwatch.com/jp/映画/karigaribo-shi"
         },
         {
+          "id": "amp_515",
+          "title": "ブルックリン横丁",
+          "original_title": "A Tree Grows in Brooklyn",
+          "type": "movie",
+          "genres": [
+            "ドラマ",
+            "ファミリー",
+            "ロマンス"
+          ],
+          "platforms": [],
+          "year": 1945,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/290293672/{profile}/burutsukurinheng-ting.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/映画/burutsukurinheng-ting"
+        },
+        {
           "id": "amp_126020",
           "title": "パトリオット・ゲーム",
           "original_title": "Patriot Games",
@@ -66548,24 +66546,6 @@
           "poster": "https://images.justwatch.com/poster/152419247/{profile}/shi-ji-nosoma.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/shi-ji-nosoma"
-        },
-        {
-          "id": "amp_52979",
-          "title": "グラスゴーの連続殺人鬼",
-          "original_title": "In Plain Sight",
-          "type": "series",
-          "genres": [
-            "犯罪",
-            "ドラマ"
-          ],
-          "platforms": [],
-          "year": 2016,
-          "release_date": null,
-          "added_date": "2026-08-22",
-          "leaving_date": null,
-          "poster": "https://images.justwatch.com/poster/307378875/{profile}/in-plain-sight.{format}",
-          "overview": "",
-          "link": "https://www.justwatch.com/jp/テレビ番組/in-plain-sight"
         },
         {
           "id": "amp_1502748",
@@ -66984,6 +66964,24 @@
           "poster": "https://images.justwatch.com/poster/125678413/{profile}/terra-nova.{format}",
           "overview": "",
           "link": "https://www.justwatch.com/jp/テレビ番組/terra-nova"
+        },
+        {
+          "id": "amp_52979",
+          "title": "グラスゴーの連続殺人鬼",
+          "original_title": "In Plain Sight",
+          "type": "series",
+          "genres": [
+            "犯罪",
+            "ドラマ"
+          ],
+          "platforms": [],
+          "year": 2016,
+          "release_date": null,
+          "added_date": "2026-08-22",
+          "leaving_date": null,
+          "poster": "https://images.justwatch.com/poster/307378875/{profile}/in-plain-sight.{format}",
+          "overview": "",
+          "link": "https://www.justwatch.com/jp/テレビ番組/in-plain-sight"
         },
         {
           "id": "amp_46761",
